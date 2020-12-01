@@ -1,6 +1,8 @@
+VAR player_name = "protag"
+
 Cosmic Crush
 
-welcome to our game
+welcome {player_name} to our game
 
 you are a bartender in a space lounge
 
@@ -9,3 +11,6 @@ you are a bartender in a space lounge
 *i hate this!
 
 you beat the game
+
+===function changeName(newName) ===
+~ player_name = newName

@@ -14,6 +14,8 @@ public class InkTest : MonoBehaviour
 
         story = new Story(inkJSON.text); //gets json file of scene
 
+        story.EvaluateFunction("changeName", "Conor"); //detects and changes the players name
+
         Debug.Log(LoadStoryChunk()); //shows all dialogue up until next choice
 
         for (int i = 0; i < story.currentChoices.Count; i++) { //displaying all choice options
