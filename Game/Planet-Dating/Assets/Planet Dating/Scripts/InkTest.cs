@@ -1,42 +1,131 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Ink.Runtime;
+using TMPro;
 
 public class InkTest : MonoBehaviour
 {
+    #region Variables
+
+    [Header("ink JSON files")]
     public TextAsset inkJSON;
     public Story story;
+    public List<TextAsset> inkFiles = new List<TextAsset>();
+    public int sceneNumber;
+
+    [Header ("Canvas")]
+    public TMP_Text dialogueBox;
+    public List<GameObject> choiceButtons = new List<GameObject>();
+    public int buttonLoopCounter;
 
 
+    bool progressPressed = false;
+
+    #endregion
+
+    #region Unity Functions
     // Start is called before the first frame update
     void Start() {
 
-        story = new Story(inkJSON.text); //gets json file of scene
+        sceneNumber = 0; //start of game will be changed based on main menu selection
 
-        Debug.Log(LoadStoryChunk()); //shows all dialogue up until next choice
+        story = new Story(inkFiles[sceneNumber].text); //gets json file of scene
 
-        for (int i = 0; i < story.currentChoices.Count; i++) { //displaying all choice options
-            Debug.Log(story.currentChoices[i].text);
-        }
+        story.EvaluateFunction("changeName", "Conor"); //detects and changes the players name
 
-        story.ChooseChoiceIndex(0); //manually picking first option
+        dialogueBox.gameObject.SetActive(true); //enables the text box
 
-        Debug.Log(LoadStoryChunk()); //displaying text after choice
+        dialogueBox.text = LoadStory(); //shows first section of dialogue
+
+        buttonLoopCounter = 0;
     }
 
     // Update is called once per frame
     void Update() {
-        
+
+        InputCheck();
+    }
+    #endregion
+
+    #region User Functions
+    void InputCheck() {
+        if ((Input.GetAxis("Progress") > 0 || Input.GetAxis("Progress") < 0) && !progressPressed) {
+            progressPressed = true;
+            dialogueBox.text = LoadStory(); //displaying text after choice
+        }
+        else if (Input.GetAxis("Progress") == 0) {
+            progressPressed = false;
+        }
     }
 
-    string LoadStoryChunk() {
+
+    string LoadStory() {
 
         string text = "";
 
         if (story.canContinue) {
-            text = story.ContinueMaximally(); //may want to remove maximally if player will click through
+            text = story.Continue(); //may want to remove maximally if player will click through
+        }
+        else if (story.currentChoices.Count > 0) {
+            RefreshUI();
+        }
+        else {
+            //move to next scene or something by changing where the list is pointing
+            dialogueBox.gameObject.SetActive(false);
+            sceneNumber++;
         }
         return text;
     }
+
+    void ChooseDialogueChoice(Choice choice) {
+
+        story.ChooseChoiceIndex(choice.index);
+
+        RefreshUI();
+    }
+
+    void RefreshUI() {
+
+
+        foreach (Choice choice in story.currentChoices) {
+            choiceButtons[buttonLoopCounter].SetActive(true);
+            Button currentButton = choiceButtons[buttonLoopCounter].GetComponent<Button>() ; //find amount of choices and enable buttons needed
+            Text choiceText = currentButton.GetComponentInChildren<Text>(); //gets text element in button and changes text to match choices
+            choiceText.text = choice.text;
+
+            currentButton.onClick.AddListener(delegate {
+                ChooseDialogueChoice(choice);
+                EraseUI();
+            });
+
+            if (story.currentChoices.Count-1 > buttonLoopCounter) {
+                buttonLoopCounter++;
+            }
+        }
+    }
+
+    void EraseUI() {
+
+        foreach (GameObject choiceButton in choiceButtons) {
+            choiceButton.SetActive(false);
+        }
+
+        dialogueBox.gameObject.SetActive(true);
+    }
+
+    #endregion
 }
+
+/* for choices
+ * need to check when a choice is happening
+ * disable dialogue box
+ * check amount of choices there are
+ * enable each button for the amount
+ * put correct text for each button 
+ * after choice disable each button and chack which choice was made
+ * ensure correct path was gone down
+ * enable dialogue box
+ * 32:30
+ */
