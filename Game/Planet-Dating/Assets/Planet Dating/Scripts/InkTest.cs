@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Ink.Runtime;
+using TMPro;
 
 public class InkTest : MonoBehaviour
 {
@@ -15,10 +16,9 @@ public class InkTest : MonoBehaviour
     public int sceneNumber;
 
     [Header ("Canvas")]
-    public Text dialogueBox;
-    public Button choice1Button;
-    public Button choice2Button;
-    public Button choice3Button;
+    public TMP_Text dialogueBox;
+    public List<GameObject> choiceButtons = new List<GameObject>();
+    public int buttonLoopCounter;
 
 
     bool progressPressed = false;
@@ -35,21 +35,22 @@ public class InkTest : MonoBehaviour
 
         story.EvaluateFunction("changeName", "Conor"); //detects and changes the players name
 
-        dialogueBox.enabled = true; //enables the text box
+        dialogueBox.gameObject.SetActive(true); //enables the text box
 
-        LoadStory(); //shows first section of dialogue
+        dialogueBox.text = LoadStory(); //shows first section of dialogue
+
+        buttonLoopCounter = 0;
     }
 
     // Update is called once per frame
     void Update() {
 
-        ButtonCheck();
-        
+        InputCheck();
     }
     #endregion
 
     #region User Functions
-    void ButtonCheck() {
+    void InputCheck() {
         if ((Input.GetAxis("Progress") > 0 || Input.GetAxis("Progress") < 0) && !progressPressed) {
             progressPressed = true;
             dialogueBox.text = LoadStory(); //displaying text after choice
@@ -67,14 +68,52 @@ public class InkTest : MonoBehaviour
         if (story.canContinue) {
             text = story.Continue(); //may want to remove maximally if player will click through
         }
+        else if (story.currentChoices.Count > 0) {
+            RefreshUI();
+        }
         else {
             //move to next scene or something by changing where the list is pointing
-            dialogueBox.enabled = false;
+            dialogueBox.gameObject.SetActive(false);
             sceneNumber++;
         }
         return text;
     }
 
+    void ChooseDialogueChoice(Choice choice) {
+
+        story.ChooseChoiceIndex(choice.index);
+
+        RefreshUI();
+    }
+
+    void RefreshUI() {
+
+
+        foreach (Choice choice in story.currentChoices) {
+            choiceButtons[buttonLoopCounter].SetActive(true);
+            Button currentButton = choiceButtons[buttonLoopCounter].GetComponent<Button>() ; //find amount of choices and enable buttons needed
+            Text choiceText = currentButton.GetComponentInChildren<Text>(); //gets text element in button and changes text to match choices
+            choiceText.text = choice.text;
+
+            currentButton.onClick.AddListener(delegate {
+                ChooseDialogueChoice(choice);
+                EraseUI();
+            });
+
+            if (story.currentChoices.Count-1 > buttonLoopCounter) {
+                buttonLoopCounter++;
+            }
+        }
+    }
+
+    void EraseUI() {
+
+        foreach (GameObject choiceButton in choiceButtons) {
+            choiceButton.SetActive(false);
+        }
+
+        dialogueBox.gameObject.SetActive(true);
+    }
 
     #endregion
 }
@@ -88,4 +127,5 @@ public class InkTest : MonoBehaviour
  * after choice disable each button and chack which choice was made
  * ensure correct path was gone down
  * enable dialogue box
+ * 32:30
  */
