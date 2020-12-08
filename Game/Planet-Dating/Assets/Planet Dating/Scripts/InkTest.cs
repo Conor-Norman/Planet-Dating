@@ -40,6 +40,7 @@ public class InkTest : MonoBehaviour
         dialogueBox.text = LoadStory(); //shows first section of dialogue
 
         buttonLoopCounter = 0;
+        EraseUI();
     }
 
     // Update is called once per frame
@@ -97,6 +98,7 @@ public class InkTest : MonoBehaviour
 
             currentButton.onClick.AddListener(delegate {
                 ChooseDialogueChoice(choice);
+                buttonLoopCounter = 0;
                 EraseUI();
             });
 
