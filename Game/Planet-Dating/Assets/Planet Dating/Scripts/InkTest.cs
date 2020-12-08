@@ -129,5 +129,4 @@ public class InkTest : MonoBehaviour
  * after choice disable each button and chack which choice was made
  * ensure correct path was gone down
  * enable dialogue box
- * 32:30
  */
