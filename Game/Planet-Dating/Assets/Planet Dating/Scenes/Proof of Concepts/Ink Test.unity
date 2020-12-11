@@ -368,13 +368,16 @@ MonoBehaviour:
   inkJSON: {fileID: 4900000, guid: afc8218ee135f8e4eb6c50c5064c73e9, type: 3}
   inkFiles:
   - {fileID: 4900000, guid: 99a25b8a753d2b148a079e7b00455426, type: 3}
-  sceneNumber: 0
+  - {fileID: 4900000, guid: f26855efc92da8143a9ea18ebe1535f7, type: 3}
+  sceneNumber: 1
   dialogueBox: {fileID: 1868405069}
   choiceButtons:
   - {fileID: 169516036}
   - {fileID: 1694097262}
   - {fileID: 1669530545}
   buttonLoopCounter: 0
+  character: none
+  affection: 0
 --- !u!1 &642139652
 GameObject:
   m_ObjectHideFlags: 0
