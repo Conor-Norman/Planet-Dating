@@ -38,7 +38,7 @@ public class InkTest : MonoBehaviour
 
         story = new Story(inkFiles[sceneNumber].text); //gets json file of scene
 
-        story.EvaluateFunction("changeName", "Protag User"); //detects and changes the players name
+        story.EvaluateFunction("changeName", "Protag"); //detects and changes the players name
 
         dialogueBox.gameObject.SetActive(true); //enables the text box
 

@@ -3,9 +3,12 @@ VAR character = ""
 VAR pose = ""
 VAR solAffection = 0
 
-Cosmic Crush
+->Intro
 
 ==Intro
+
+Cosmic Crush
+
 welcome {player_name} to our game
 
     ->SolWalksIn
@@ -13,7 +16,8 @@ welcome {player_name} to our game
 ==SolWalksIn
 ~character = "sol"
 ~pose = "neutral"
-hey im sol, howa it going.
+
+hey im sol, hows it going.
 
 you must be new here. {player_name} right?
 
