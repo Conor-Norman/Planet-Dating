@@ -20,6 +20,11 @@ public class InkTest : MonoBehaviour
     public List<GameObject> choiceButtons = new List<GameObject>();
     public int buttonLoopCounter;
 
+    [Header("On Screen")]
+    public string character = "none";
+
+    [Header("Stats")]
+    public int affection;
 
     bool progressPressed = false;
 
@@ -29,17 +34,18 @@ public class InkTest : MonoBehaviour
     // Start is called before the first frame update
     void Start() {
 
-        sceneNumber = 0; //start of game will be changed based on main menu selection
+        //sceneNumber = 0; //start of game will be changed based on main menu selection
 
         story = new Story(inkFiles[sceneNumber].text); //gets json file of scene
 
-        story.EvaluateFunction("changeName", "Conor"); //detects and changes the players name
+        story.EvaluateFunction("changeName", "Protag"); //detects and changes the players name
 
         dialogueBox.gameObject.SetActive(true); //enables the text box
 
         dialogueBox.text = LoadStory(); //shows first section of dialogue
 
         buttonLoopCounter = 0;
+        DisableChoiceBox();
     }
 
     // Update is called once per frame
@@ -54,6 +60,8 @@ public class InkTest : MonoBehaviour
         if ((Input.GetAxis("Progress") > 0 || Input.GetAxis("Progress") < 0) && !progressPressed) {
             progressPressed = true;
             dialogueBox.text = LoadStory(); //displaying text after choice
+
+            character = (string)story.EvaluateFunction("changeCharacter"); //changes the character on screen
         }
         else if (Input.GetAxis("Progress") == 0) {
             progressPressed = false;
@@ -69,12 +77,12 @@ public class InkTest : MonoBehaviour
             text = story.Continue(); //may want to remove maximally if player will click through
         }
         else if (story.currentChoices.Count > 0) {
-            RefreshUI();
+            EnableButtons();
         }
         else {
             //move to next scene or something by changing where the list is pointing
             dialogueBox.gameObject.SetActive(false);
-            sceneNumber++;
+            ChangeScene();
         }
         return text;
     }
@@ -83,11 +91,10 @@ public class InkTest : MonoBehaviour
 
         story.ChooseChoiceIndex(choice.index);
 
-        RefreshUI();
+        EnableButtons();
     }
 
-    void RefreshUI() {
-
+    void EnableButtons() {
 
         foreach (Choice choice in story.currentChoices) {
             choiceButtons[buttonLoopCounter].SetActive(true);
@@ -97,7 +104,8 @@ public class InkTest : MonoBehaviour
 
             currentButton.onClick.AddListener(delegate {
                 ChooseDialogueChoice(choice);
-                EraseUI();
+                buttonLoopCounter = 0;
+                DisableChoiceBox();
             });
 
             if (story.currentChoices.Count-1 > buttonLoopCounter) {
@@ -106,13 +114,21 @@ public class InkTest : MonoBehaviour
         }
     }
 
-    void EraseUI() {
+
+    void DisableChoiceBox() {
 
         foreach (GameObject choiceButton in choiceButtons) {
             choiceButton.SetActive(false);
         }
 
         dialogueBox.gameObject.SetActive(true);
+    }
+
+    void ChangeScene() {
+
+        affection = (int)story.EvaluateFunction("getAffection"); //gets the affection value fomr ink
+
+        sceneNumber++;
     }
 
     #endregion
@@ -127,5 +143,4 @@ public class InkTest : MonoBehaviour
  * after choice disable each button and chack which choice was made
  * ensure correct path was gone down
  * enable dialogue box
- * 32:30
  */
