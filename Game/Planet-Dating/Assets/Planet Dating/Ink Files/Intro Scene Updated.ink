@@ -331,11 +331,6 @@ AND THEN IT GOES INTO THE FREE TIME PORTION WHERE YOU WALK AROUND AND MEET HOT P
     
     
     
-===function changeName(newName) ===
+    
+    ===function changeName(newName) ===
 ~ players_name = newName
-
-===function changeCharacter===
-~return character
-
-===function getAffection===
-~return SolAffection
