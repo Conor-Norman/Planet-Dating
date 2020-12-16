@@ -1,11 +1,18 @@
 VAR player_name = "protag"
 VAR character = ""
+VAR characterVisible = 0
 VAR pose = ""
 VAR solAffection = 0
+
+VAR scene = ""
+VAR background = ""
 
 ->Intro
 
 ==Intro
+
+~ scene = "FreeTime"
+~ background = "Lounge"
 
 Cosmic Crush
 
@@ -14,6 +21,7 @@ welcome {player_name} to our game
     ->SolWalksIn
 
 ==SolWalksIn
+~ characterVisible = 1
 ~character = "sol"
 ~pose = "neutral"
 
@@ -25,9 +33,12 @@ well welcome to my lounge, im going to have you work here as a bartender
 
 are you ready to do that?
 
+~ characterVisible = 0
+
     +[Hell yeah!]
     ~solAffection++
     ~pose = "happy"
+    ~ characterVisible = 1
     
       wow {player_name}, you're confident in yourself.
         
@@ -36,6 +47,7 @@ are you ready to do that?
             -> FirstCustomer
 
     +[i'm not too sure]
+    ~ characterVisible = 1
         dont worry {player_name}, you'll get the hang of alright
     
         -> FirstCustomer
@@ -47,6 +59,7 @@ are you ready to do that?
 
 ==PutInPlace
     ~pose = "stern"
+    ~ characterVisible = 1
         listen here, there isnt any place other then the bar to work
         
         you desperatly needed this job and i helped you out
@@ -69,6 +82,8 @@ hey, im {character} im told your new here so ill go easy.
 im looking for something sweet
 
 START BARTENDING SECTION
+
+~ scene = "Bar"
     ->END
 
 ===function changeName(newName) ===

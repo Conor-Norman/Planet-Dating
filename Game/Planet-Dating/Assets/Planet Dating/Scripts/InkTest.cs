@@ -21,10 +21,17 @@ public class InkTest : MonoBehaviour
     public int buttonLoopCounter;
 
     [Header("On Screen")]
-    public string character = "none";
+    //area, character, pose, background, 
+    public string character = "";
+    string characterTemp = "";
+    public string area = "";
+    string areaTemp = "";
 
     [Header("Stats")]
     public int affection;
+
+    [Header("Scripts")]
+    public SceneManager sceneManagerScript;
 
     bool progressPressed = false;
 
@@ -38,7 +45,9 @@ public class InkTest : MonoBehaviour
 
         story = new Story(inkFiles[sceneNumber].text); //gets json file of scene
 
-        story.EvaluateFunction("changeName", "Protag"); //detects and changes the players name
+        CheckForSceneChanges();
+
+        story.EvaluateFunction("changeName", "Protag"); //changes the players name in ink
 
         dialogueBox.gameObject.SetActive(true); //enables the text box
 
@@ -61,7 +70,7 @@ public class InkTest : MonoBehaviour
             progressPressed = true;
             dialogueBox.text = LoadStory(); //displaying text after choice
 
-            character = (string)story.EvaluateFunction("changeCharacter"); //changes the character on screen
+            CheckForSceneChanges();
         }
         else if (Input.GetAxis("Progress") == 0) {
             progressPressed = false;
@@ -81,8 +90,7 @@ public class InkTest : MonoBehaviour
         }
         else {
             //move to next scene or something by changing where the list is pointing
-            dialogueBox.gameObject.SetActive(false);
-            ChangeScene();
+            sceneNumber++;
         }
         return text;
     }
@@ -124,11 +132,18 @@ public class InkTest : MonoBehaviour
         dialogueBox.gameObject.SetActive(true);
     }
 
-    void ChangeScene() {
+    void CheckForSceneChanges() {
 
-        affection = (int)story.EvaluateFunction("getAffection"); //gets the affection value fomr ink
+        areaTemp = (string)story.EvaluateFunction("getArea");
+        if (areaTemp != area) {
+            area = areaTemp;
+            sceneManagerScript.ChangeArea(area); //changes the area the player is in
+        }
 
-        sceneNumber++;
+
+        
+
+        character = (string)story.EvaluateFunction("changeCharacter"); //changes the character on screen
     }
 
     #endregion
