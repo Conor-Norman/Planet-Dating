@@ -1,18 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class SceneManager : MonoBehaviour
-{
+public class SceneManager : MonoBehaviour {
     [Header("FreeTime Elements")]
     public GameObject textBox;
     public GameObject character;
+    Image characterImage;
     public SpriteRenderer background;
 
     [Header("Bar Elements")]
     public GameObject ingredientOrbit;
 
-    
+    [Header("Art")]
+    public List<Sprite> characterBodies = new List<Sprite>();
+
+
+    private void Start() {
+        characterImage = character.GetComponent<Image>();
+    }
+
     public void ChangeArea(string areaName) {
 
         //fade to black
@@ -25,7 +33,7 @@ public class SceneManager : MonoBehaviour
         }
         else if (areaName == "FreeTime") {
             ingredientOrbit.SetActive(false);
-            textBox.transform.localPosition = new Vector3 (308,-273,0); //move text box location
+            textBox.transform.localPosition = new Vector3(308, -273, 0); //move text box location
             character.transform.localPosition = new Vector3(-611, -161, 0); //move character location
             //enable text box image
         }
@@ -41,12 +49,23 @@ public class SceneManager : MonoBehaviour
 
     public void ChangeCharacter(string characterName) {
 
-        if (characterName == "sol") {
-
+        if (characterName == "none") {
+            character.SetActive(false);
         }
+        else if (characterName == "sol") {
+            character.SetActive(true);
+            characterImage.sprite = characterBodies[0];
+        }
+        else if (characterName == "mercury") {
+            character.SetActive(true);
+            characterImage.sprite = characterBodies[1];
+        }
+        else if (characterName == "earth") {
+            character.SetActive(true);
 
-        // fade out character and fade in new one with LERP?
-        //if current character != characterName. change it and make current character = it
+            // fade out character and fade in new one with LERP?
+            //if current character != characterName. change it and make current character = it
+        }
     }
 
     public void ChangeBackground(string backgroundName) {

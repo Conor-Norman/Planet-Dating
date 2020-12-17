@@ -367,6 +367,9 @@ MonoBehaviour:
   character: {fileID: 199482562}
   background: {fileID: 1702982488}
   ingredientOrbit: {fileID: 370835412}
+  characterBodies:
+  - {fileID: 21300000, guid: 90456ae8f37168440a281c96a15b5227, type: 3}
+  - {fileID: 21300000, guid: fcb9d7c44e497084584fc7471352c72c, type: 3}
 --- !u!4 &221570386
 Transform:
   m_ObjectHideFlags: 0
@@ -964,7 +967,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 140070c86c701f847baa0920bc348163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inkJSON: {fileID: 4900000, guid: afc8218ee135f8e4eb6c50c5064c73e9, type: 3}
   inkFiles:
   - {fileID: 4900000, guid: 99a25b8a753d2b148a079e7b00455426, type: 3}
   sceneNumber: 0
@@ -974,7 +976,7 @@ MonoBehaviour:
   - {fileID: 1862171810}
   - {fileID: 1787397077}
   buttonLoopCounter: 0
-  character: none
+  character: 
   area: 
   affection: 0
   sceneManagerScript: {fileID: 221570385}

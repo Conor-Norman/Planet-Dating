@@ -17,7 +17,7 @@ VAR mercuryAffection = 0
 VAR venusAffection = 0
 VAR earthAffection = 0
 
-VAR character = ""
+VAR character = "none"
 VAR characterVisible = 0
 VAR pose = 0
 VAR background = 0
@@ -339,10 +339,13 @@ A word of advice - don't be a creep.
     
     
 ===function changeName(newName) ===
-~ playerName = newName
+~playerName = newName
 
 ===function changeCharacter===
 ~return character
+
+===function getCharacterVisible==
+~return characterVisible
 
 ===function getSolAffection===
 ~return solAffection

@@ -5,17 +5,16 @@ using UnityEngine.UI;
 using Ink.Runtime;
 using TMPro;
 
-public class InkTest : MonoBehaviour
-{
+public class InkTest : MonoBehaviour {
     #region Variables
 
     [Header("ink JSON files")]
-    public TextAsset inkJSON;
+    //public TextAsset inkJSON;
     public Story story;
     public List<TextAsset> inkFiles = new List<TextAsset>();
     public int sceneNumber;
 
-    [Header ("Canvas")]
+    [Header("Canvas")]
     public TMP_Text dialogueBox;
     public List<GameObject> choiceButtons = new List<GameObject>();
     public int buttonLoopCounter;
@@ -106,7 +105,7 @@ public class InkTest : MonoBehaviour
 
         foreach (Choice choice in story.currentChoices) {
             choiceButtons[buttonLoopCounter].SetActive(true);
-            Button currentButton = choiceButtons[buttonLoopCounter].GetComponent<Button>() ; //find amount of choices and enable buttons needed
+            Button currentButton = choiceButtons[buttonLoopCounter].GetComponent<Button>(); //find amount of choices and enable buttons needed
             Text choiceText = currentButton.GetComponentInChildren<Text>(); //gets text element in button and changes text to match choices
             choiceText.text = choice.text;
 
@@ -116,7 +115,7 @@ public class InkTest : MonoBehaviour
                 DisableChoiceBox();
             });
 
-            if (story.currentChoices.Count-1 > buttonLoopCounter) {
+            if (story.currentChoices.Count - 1 > buttonLoopCounter) {
                 buttonLoopCounter++;
             }
         }
@@ -140,10 +139,11 @@ public class InkTest : MonoBehaviour
             sceneManagerScript.ChangeArea(area); //changes the area the player is in
         }
 
-
-        
-
-        character = (string)story.EvaluateFunction("changeCharacter"); //changes the character on screen
+        characterTemp = (string)story.EvaluateFunction("changeCharacter");
+        if (characterTemp != character) {
+            character = characterTemp;
+            sceneManagerScript.ChangeCharacter(character);
+        }
     }
 
     #endregion
