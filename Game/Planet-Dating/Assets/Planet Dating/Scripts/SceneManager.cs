@@ -4,21 +4,22 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class SceneManager : MonoBehaviour {
-    [Header("FreeTime Elements")]
+    [Header("Canvas Elements")]
     public GameObject textBox;
     public GameObject character;
-    Image characterImage;
+    Image characterBodyImage;
+    MeshRenderer characterHeadMeshRend;
     public SpriteRenderer background;
-
-    [Header("Bar Elements")]
     public GameObject ingredientOrbit;
 
     [Header("Art")]
     public List<Sprite> characterBodies = new List<Sprite>();
+    public List<Material> characterHeads = new List<Material>();
 
 
     private void Start() {
-        characterImage = character.GetComponent<Image>();
+        characterBodyImage = character.GetComponent<Image>();
+        characterHeadMeshRend = character.GetComponentInChildren<MeshRenderer>();
     }
 
     public void ChangeArea(string areaName) {
@@ -29,19 +30,19 @@ public class SceneManager : MonoBehaviour {
             ingredientOrbit.SetActive(true);
             textBox.transform.localPosition = new Vector3(570, 283, 0); //move text box location
             character.transform.localPosition = new Vector3(511, -359, 0); //move character location
-            //disable image of text box
+            //change image of text box
         }
         else if (areaName == "FreeTime") {
             ingredientOrbit.SetActive(false);
             textBox.transform.localPosition = new Vector3(308, -273, 0); //move text box location
             character.transform.localPosition = new Vector3(-611, -161, 0); //move character location
-            //enable text box image
+            //change text box image
         }
         else if (areaName == "Date") {
             ingredientOrbit.SetActive(false);
             //move text box location
             //move character location
-            //enable textbox image
+            //change textbox image
         }
 
         //fade back in
@@ -54,11 +55,13 @@ public class SceneManager : MonoBehaviour {
         }
         else if (characterName == "sol") {
             character.SetActive(true);
-            characterImage.sprite = characterBodies[0];
+            characterBodyImage.sprite = characterBodies[0];
+            characterHeadMeshRend.material = characterHeads[0];
         }
         else if (characterName == "mercury") {
             character.SetActive(true);
-            characterImage.sprite = characterBodies[1];
+            characterBodyImage.sprite = characterBodies[1];
+            characterHeadMeshRend.material = characterHeads[1];
         }
         else if (characterName == "earth") {
             character.SetActive(true);
