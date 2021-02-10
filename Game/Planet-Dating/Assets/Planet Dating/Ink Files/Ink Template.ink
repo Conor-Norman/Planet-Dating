@@ -1,17 +1,24 @@
-VAR player_name = "protag"
+VAR player_name = ""
 VAR character = ""
 VAR characterVisible = 0
 VAR pose = ""
 VAR solAffection = 0
 
-VAR scene = ""
+VAR area = ""
 VAR background = ""
+
+VAR idealIngredient1 = 0
+VAR idealIngredient2 = 0
+VAR idealIngredient3 = 0
+VAR minimalIngredients = 0
+VAR matchingIngredientCount = 0
+VAR continueStory = false
 
 ->Intro
 
 ==Intro
 
-~ scene = "FreeTime"
+~ area = "FreeTime"
 ~ background = "Lounge"
 
 Cosmic Crush
@@ -83,7 +90,46 @@ im looking for something sweet
 
 START BARTENDING SECTION
 
-~ scene = "Bar"
+~ area = "Bartending"
+~idealIngredient1 = 2
+~idealIngredient2 = 1
+~idealIngredient3 = 0
+~minimalIngredients = 1
+
+{ continueStory == true:
+    { 
+    - matchingIngredientCount == 3:
+        -> PerfectDrink
+    
+    - matchingIngredientCount >= minimalIngredients:
+        -> Almost
+
+    - matchingIngredientCount < minimalIngredients:
+       -> WayOff
+    }
+    ~ continueStory = false
+    - else:
+    ->END
+}
+
+==PerfectDrink
+my god you managed to make a perfect drink on your first try
+
+you are going to be a really good fit
+
+    ->END
+
+
+==Almost
+you got most of the ingredients right
+
+with a bit more practice youll get pretty good at this
+
+    ->END
+    
+==WayOff
+well at least you managed to make a drink
+
     ->END
 
 ===function changeName(newName) ===
@@ -94,3 +140,24 @@ START BARTENDING SECTION
 
 ===function getAffection===
 ~return solAffection
+
+===function getArea===
+~return area
+
+===function getIdealIngredient1===
+~return idealIngredient1
+
+===function getIdealIngredient2===
+~return idealIngredient2
+
+===function getIdealIngredient3===
+~return idealIngredient3
+
+== function getMinimalIngredients===
+~return minimalIngredients
+
+
+
+
+
+

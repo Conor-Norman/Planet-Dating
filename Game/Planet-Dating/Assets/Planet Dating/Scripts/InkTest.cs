@@ -146,6 +146,18 @@ public class InkTest : MonoBehaviour {
         }
     }
 
+    public int[] GetIdealDrink() {
+        //List<int> ingredients = new List<int>();
+        int[] ingredients = new int[4];
+
+        ingredients[0] = (int)story.EvaluateFunction("getIdealIngredient1");
+        ingredients[1] = (int)story.EvaluateFunction("getIdealIngredient2");
+        ingredients[2] = (int)story.EvaluateFunction("getIdealIngredient3");
+        ingredients[3] = (int)story.EvaluateFunction("getMinimalIngredients");
+
+        return ingredients;
+    }
+
     #endregion
 }
 

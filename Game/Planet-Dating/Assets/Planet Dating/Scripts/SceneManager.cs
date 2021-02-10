@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class SceneManager : MonoBehaviour {
+
+    #region Variables
     [Header("Canvas Elements")]
     public GameObject textBox;
     public GameObject character;
@@ -16,12 +18,16 @@ public class SceneManager : MonoBehaviour {
     public List<Sprite> characterBodies = new List<Sprite>();
     public List<Material> characterHeads = new List<Material>();
 
+    #endregion
 
+    #region UnityFunctions
     private void Start() {
         characterBodyImage = character.GetComponent<Image>();
         characterHeadMeshRend = character.GetComponentInChildren<MeshRenderer>();
     }
+    #endregion
 
+    #region User Functions
     public void ChangeArea(string areaName) {
 
         //fade to black
@@ -86,4 +92,6 @@ public class SceneManager : MonoBehaviour {
             //remove black overlay
         }
     }
+
+    #endregion
 }
