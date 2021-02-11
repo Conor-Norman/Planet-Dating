@@ -11,8 +11,6 @@ VAR idealIngredient1 = 0
 VAR idealIngredient2 = 0
 VAR idealIngredient3 = 0
 VAR minimalIngredients = 0
-VAR matchingIngredientCount = 0
-VAR continueStory = false
 
 ->Intro
 
@@ -86,51 +84,15 @@ mercury walks up
 
 hey, im {character} im told your new here so ill go easy.
 
-im looking for something sweet
-
-START BARTENDING SECTION
-
-~ area = "Bartending"
 ~idealIngredient1 = 2
 ~idealIngredient2 = 1
 ~idealIngredient3 = 0
 ~minimalIngredients = 1
+~ area = "Bartending"
 
-{ continueStory == true:
-    { 
-    - matchingIngredientCount == 3:
-        -> PerfectDrink
-    
-    - matchingIngredientCount >= minimalIngredients:
-        -> Almost
+im looking for something sweet
 
-    - matchingIngredientCount < minimalIngredients:
-       -> WayOff
-    }
-    ~ continueStory = false
-    - else:
-    ->END
-}
-
-==PerfectDrink
-my god you managed to make a perfect drink on your first try
-
-you are going to be a really good fit
-
-    ->END
-
-
-==Almost
-you got most of the ingredients right
-
-with a bit more practice youll get pretty good at this
-
-    ->END
-    
-==WayOff
-well at least you managed to make a drink
-
-    ->END
+ -> END
 
 ===function changeName(newName) ===
 ~ player_name = newName
@@ -155,12 +117,6 @@ well at least you managed to make a drink
 
 ===function getMinimalIngredients===
 ~return minimalIngredients
-
-===function setMatchingIngredients(amount)===
-~matchingIngredientCount = amount
-
-===function setContinueStory===
-~continueStory = true
 
 
 

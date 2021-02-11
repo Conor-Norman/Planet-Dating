@@ -50,9 +50,11 @@ public class BarManager : MonoBehaviour {
             }
         }
 
+        inkManagerScript.ChangeInkFile(); //move to correct scene based on customer in scene and check what scene comes after reaction
+
         inkManagerScript.SetMatchingIngredientCount(matchingIngredientsCount);
 
-        inkManagerScript.ContinueStory(); //continues the story in ink
+        inkManagerScript.SetMinimalIngredients(idealIngredients[3]);
 
         //send value to ink
         //if (matchingIngredientsCount == 3) {

@@ -374,6 +374,7 @@ MonoBehaviour:
   characterHeads:
   - {fileID: 2100000, guid: fdc962e0b5b5f594e96dbd4da39dd08e, type: 2}
   - {fileID: 2100000, guid: a0f581b20e5857843afb99697c921598, type: 2}
+  inkManagerScript: {fileID: 904470205}
 --- !u!4 &221570386
 Transform:
   m_ObjectHideFlags: 0
@@ -496,6 +497,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Orbit Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 6987353004920377248, guid: e1c86f6d3c86d954b954f39e761fb87f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6987353004920377279, guid: e1c86f6d3c86d954b954f39e761fb87f,
         type: 3}
@@ -976,6 +982,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inkFiles:
   - {fileID: 4900000, guid: f26855efc92da8143a9ea18ebe1535f7, type: 3}
+  - {fileID: 4900000, guid: fc526e25b2abeb64c95fc4b478168475, type: 3}
   sceneNumber: 0
   dialogueBox: {fileID: 29361423}
   choiceButtons:

@@ -18,6 +18,9 @@ public class SceneManager : MonoBehaviour {
     public List<Sprite> characterBodies = new List<Sprite>();
     public List<Material> characterHeads = new List<Material>();
 
+    [Header("Scripts")]
+    public InkTest inkManagerScript;
+
     #endregion
 
     #region UnityFunctions
@@ -37,6 +40,7 @@ public class SceneManager : MonoBehaviour {
             textBox.transform.localPosition = new Vector3(570, 283, 0); //move text box location
             character.transform.localPosition = new Vector3(511, -359, 0); //move character location
             //change image of text box
+            inkManagerScript.pause = true;
         }
         else if (areaName == "FreeTime") {
             ingredientOrbit.SetActive(false);

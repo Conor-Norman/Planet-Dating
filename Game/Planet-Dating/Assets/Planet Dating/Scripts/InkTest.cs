@@ -32,8 +32,8 @@ public class InkTest : MonoBehaviour {
     [Header("Scripts")]
     public SceneManager sceneManagerScript;
 
+    [Header("Variables")]
     public bool pause;
-
     bool progressPressed = false;
 
     #endregion
@@ -44,11 +44,9 @@ public class InkTest : MonoBehaviour {
 
         //sceneNumber = 0; //start of game will be changed based on main menu selection
 
-        story = new Story(inkFiles[sceneNumber].text); //gets json file of scene
+        story = new Story(inkFiles[sceneNumber].text);
 
         CheckForSceneChanges();
-
-        story.EvaluateFunction("changeName", "Protag"); //changes the players name in ink (change protag to the actual name set in unity
 
         dialogueBox.gameObject.SetActive(true); //enables the text box
 
@@ -68,11 +66,10 @@ public class InkTest : MonoBehaviour {
     }
     #endregion
 
-    #region User Functions
+    #region Story Running Functions
     void InputCheck() {
         if ((Input.GetAxis("Progress") > 0 || Input.GetAxis("Progress") < 0) && !progressPressed) {
             progressPressed = true;
-            dialogueBox.text = LoadStory(); //displaying text after choice
 
             CheckForSceneChanges();
         }
@@ -93,8 +90,9 @@ public class InkTest : MonoBehaviour {
             EnableButtons();
         }
         else {
+
+            ChangeInkFile();
             //move to next scene or something by changing where the list is pointing
-            sceneNumber++;
         }
         return text;
     }
@@ -135,8 +133,26 @@ public class InkTest : MonoBehaviour {
 
         dialogueBox.gameObject.SetActive(true);
     }
+    #endregion
 
+    #region Ink Variables
+
+    public void ChangeInkFile() {
+        sceneNumber++;
+
+        story = new Story(inkFiles[sceneNumber].text); //gets json file of scene
+
+        pause = false;
+
+        CheckForSceneChanges();
+
+        //change all variables from saved file
+
+        story.EvaluateFunction("changeName", "Protag"); //changes the players name in ink (change protag to the actual name from fariables script)
+    }
     void CheckForSceneChanges() {
+
+        dialogueBox.text = LoadStory(); //displaying text after choice
 
         areaTemp = (string)story.EvaluateFunction("getArea");
         if (areaTemp != area) {
@@ -167,8 +183,8 @@ public class InkTest : MonoBehaviour {
         story.EvaluateFunction("setMatchingIngredients", amount);
     }
 
-    public void ContinueStory() {
-        story.EvaluateFunction("setContinueStory");
+    public void SetMinimalIngredients(int amount) {
+        story.EvaluateFunction("setMinimalIngredients", amount);
     }
 
     #endregion
