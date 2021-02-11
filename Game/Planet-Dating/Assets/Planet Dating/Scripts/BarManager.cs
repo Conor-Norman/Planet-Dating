@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class BarManager : MonoBehaviour {
     #region Variables
+
     [Header("Variables")]
     int[] idealIngredients;
-    //List<int> idealIngredients = new List<int>();
     int[] selectedIngredients;
-    //List<int> selectedIngredients = new List<int>();
+    public int orbitIngredient1;
+    public int orbitIngredient2;
+    public int orbitIngredient3;
     public int minimalIngredients = 0;
-    int matchingIngredientsCount;
+    public int matchingIngredientsCount;
 
-    [Header("Game Objects")]
-    GameObject orbitRing;
-
-    [Header("scripts")]
+    [Header("Scripts")]
     public InkTest inkManagerScript;
 
     #endregion
@@ -29,14 +28,14 @@ public class BarManager : MonoBehaviour {
     #endregion
 
     #region User Functions
-    public void getIngredients(int[] orbitSelectedIngredients) {
+    public void getIngredients() {
         idealIngredients = inkManagerScript.GetIdealDrink();
 
         minimalIngredients = idealIngredients[3];
 
-        selectedIngredients = orbitSelectedIngredients;
-
-        //Variables.Object(orbitRing).Get("IngredientCombo"); //gets variables from orbit ring???
+        selectedIngredients[0] = orbitIngredient1;
+        selectedIngredients[1] = orbitIngredient2;
+        selectedIngredients[2] = orbitIngredient3;
 
         CompareIngredients();
     }
@@ -45,13 +44,15 @@ public class BarManager : MonoBehaviour {
 
         matchingIngredientsCount = 0;
 
-        for (int i = 0; i < selectedIngredients.Length; i++) {
+        for (int i = 0; i < 3; i++) {
             if (idealIngredients[i] == selectedIngredients[i]) {
                 matchingIngredientsCount++;
             }
         }
 
-        Debug.Log(matchingIngredientsCount);
+        inkManagerScript.SetMatchingIngredientCount(matchingIngredientsCount);
+
+        inkManagerScript.ContinueStory(); //continues the story in ink
 
         //send value to ink
         //if (matchingIngredientsCount == 3) {

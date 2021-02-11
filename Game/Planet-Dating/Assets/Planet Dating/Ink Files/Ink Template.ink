@@ -153,9 +153,14 @@ well at least you managed to make a drink
 ===function getIdealIngredient3===
 ~return idealIngredient3
 
-== function getMinimalIngredients===
+===function getMinimalIngredients===
 ~return minimalIngredients
 
+===function setMatchingIngredients(amount)===
+~matchingIngredientCount = amount
+
+===function setContinueStory===
+~continueStory = true
 
 
 

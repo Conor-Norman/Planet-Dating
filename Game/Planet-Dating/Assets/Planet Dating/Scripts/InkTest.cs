@@ -32,6 +32,8 @@ public class InkTest : MonoBehaviour {
     [Header("Scripts")]
     public SceneManager sceneManagerScript;
 
+    public bool pause;
+
     bool progressPressed = false;
 
     #endregion
@@ -46,7 +48,7 @@ public class InkTest : MonoBehaviour {
 
         CheckForSceneChanges();
 
-        story.EvaluateFunction("changeName", "Protag"); //changes the players name in ink
+        story.EvaluateFunction("changeName", "Protag"); //changes the players name in ink (change protag to the actual name set in unity
 
         dialogueBox.gameObject.SetActive(true); //enables the text box
 
@@ -59,7 +61,10 @@ public class InkTest : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
-        InputCheck();
+        if (!pause) {
+            InputCheck();
+        }
+        
     }
     #endregion
 
@@ -156,6 +161,14 @@ public class InkTest : MonoBehaviour {
         ingredients[3] = (int)story.EvaluateFunction("getMinimalIngredients");
 
         return ingredients;
+    }
+
+    public void SetMatchingIngredientCount(int amount) {
+        story.EvaluateFunction("setMatchingIngredients", amount);
+    }
+
+    public void ContinueStory() {
+        story.EvaluateFunction("setContinueStory");
     }
 
     #endregion

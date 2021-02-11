@@ -487,6 +487,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1790719106}
     m_Modifications:
+    - target: {fileID: 4849950307132072849, guid: e1c86f6d3c86d954b954f39e761fb87f,
+        type: 3}
+      propertyPath: inkManagerScript
+      value: 
+      objectReference: {fileID: 904470205}
     - target: {fileID: 6987353004920377248, guid: e1c86f6d3c86d954b954f39e761fb87f,
         type: 3}
       propertyPath: m_Name
@@ -545,6 +550,11 @@ PrefabInstance:
     - target: {fileID: 6987353004920377279, guid: e1c86f6d3c86d954b954f39e761fb87f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6987353006182511174, guid: e1c86f6d3c86d954b954f39e761fb87f,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -977,6 +987,7 @@ MonoBehaviour:
   area: 
   affection: 0
   sceneManagerScript: {fileID: 221570385}
+  pause: 0
 --- !u!4 &904470206
 Transform:
   m_ObjectHideFlags: 0
