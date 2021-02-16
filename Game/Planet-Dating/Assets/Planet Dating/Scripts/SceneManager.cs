@@ -13,6 +13,7 @@ public class SceneManager : MonoBehaviour {
     MeshRenderer characterHeadMeshRend;
     public SpriteRenderer background;
     public GameObject ingredientOrbit;
+    public GameObject IngredientList;
 
     [Header("Art")]
     public List<Sprite> characterBodies = new List<Sprite>();
@@ -37,6 +38,7 @@ public class SceneManager : MonoBehaviour {
 
         if (areaName == "Bartending") {
             ingredientOrbit.SetActive(true);
+            IngredientList.SetActive(true);
             textBox.transform.localPosition = new Vector3(570, 283, 0); //move text box location
             character.transform.localPosition = new Vector3(511, -359, 0); //move character location
             //change image of text box
@@ -44,12 +46,14 @@ public class SceneManager : MonoBehaviour {
         }
         else if (areaName == "FreeTime") {
             ingredientOrbit.SetActive(false);
+            IngredientList.SetActive(false);
             textBox.transform.localPosition = new Vector3(308, -273, 0); //move text box location
             character.transform.localPosition = new Vector3(-611, -161, 0); //move character location
             //change text box image
         }
         else if (areaName == "Date") {
             ingredientOrbit.SetActive(false);
+            IngredientList.SetActive(false);
             //move text box location
             //move character location
             //change textbox image
@@ -63,22 +67,29 @@ public class SceneManager : MonoBehaviour {
         if (characterName == "none") {
             character.SetActive(false);
         }
-        else if (characterName == "sol") {
+        else if (characterName == "player") {
             character.SetActive(true);
-            characterBodyImage.sprite = characterBodies[0];
-            characterHeadMeshRend.material = characterHeads[0];
+            characterBodyImage.color = new Color(100,100,100);
+        }
+        else if (characterName == "sol") {
+            ChangeCharacterVariables(0);
         }
         else if (characterName == "mercury") {
-            character.SetActive(true);
-            characterBodyImage.sprite = characterBodies[1];
-            characterHeadMeshRend.material = characterHeads[1];
+            ChangeCharacterVariables(1);
         }
-        else if (characterName == "earth") {
-            character.SetActive(true);
+        else if (characterName == "venus") {
+            ChangeCharacterVariables(2);
 
             // fade out character and fade in new one with LERP?
             //if current character != characterName. change it and make current character = it
         }
+    }
+
+    void ChangeCharacterVariables(int index) {
+        character.SetActive(true);
+        characterBodyImage.sprite = characterBodies[index];
+        characterHeadMeshRend.material = characterHeads[index];
+        characterBodyImage.color = new Color(255, 255, 255);
     }
 
     public void ChangeBackground(string backgroundName) {
@@ -91,9 +102,11 @@ public class SceneManager : MonoBehaviour {
 
         if (visible == 0) {
             //add black overlaw
+            characterBodyImage.color = new Color(100, 100, 100);
         }
         else if (visible == 1) {
             //remove black overlay
+            characterBodyImage.color = new Color(255, 255, 255);
         }
     }
 

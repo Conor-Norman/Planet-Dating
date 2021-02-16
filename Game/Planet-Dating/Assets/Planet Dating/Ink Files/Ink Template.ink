@@ -84,10 +84,10 @@ mercury walks up
 
 hey, im {character} im told your new here so ill go easy.
 
-~idealIngredient1 = 2
-~idealIngredient2 = 1
+~idealIngredient1 = 0
+~idealIngredient2 = 0
 ~idealIngredient3 = 0
-~minimalIngredients = 1
+~minimalIngredients = 0
 ~ area = "Bartending"
 
 im looking for something sweet

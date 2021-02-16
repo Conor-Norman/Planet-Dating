@@ -25,6 +25,8 @@ public class InkTest : MonoBehaviour {
     string characterTemp = "";
     public string area = "";
     string areaTemp = "";
+    public int characterVisible = 1;
+    int characterVisibleTemp;
 
     [Header("Stats")]
     public int affection;
@@ -164,6 +166,12 @@ public class InkTest : MonoBehaviour {
         if (characterTemp != character) {
             character = characterTemp;
             sceneManagerScript.ChangeCharacter(character);
+        }
+
+        characterVisibleTemp = (int)story.EvaluateFunction("getCharacterVisible");
+        if (characterVisibleTemp != characterVisible) {
+            characterVisible = characterVisibleTemp;
+            sceneManagerScript.ChangeVisibility(characterVisible);
         }
     }
 

@@ -275,7 +275,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &199482563
 RectTransform:
   m_ObjectHideFlags: 0
@@ -368,11 +368,13 @@ MonoBehaviour:
   character: {fileID: 199482562}
   background: {fileID: 1702982488}
   ingredientOrbit: {fileID: 370835412}
+  IngredientList: {fileID: 1069367357}
   characterBodies:
   - {fileID: 21300000, guid: 90456ae8f37168440a281c96a15b5227, type: 3}
   - {fileID: 21300000, guid: fcb9d7c44e497084584fc7471352c72c, type: 3}
   characterHeads:
   - {fileID: 2100000, guid: fdc962e0b5b5f594e96dbd4da39dd08e, type: 2}
+  - {fileID: 2100000, guid: a0f581b20e5857843afb99697c921598, type: 2}
   - {fileID: 2100000, guid: a0f581b20e5857843afb99697c921598, type: 2}
   inkManagerScript: {fileID: 904470205}
 --- !u!4 &221570386
@@ -999,8 +1001,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inkFiles:
-  - {fileID: 4900000, guid: f26855efc92da8143a9ea18ebe1535f7, type: 3}
-  - {fileID: 4900000, guid: fc526e25b2abeb64c95fc4b478168475, type: 3}
+  - {fileID: 4900000, guid: 9716194f41c085144ab83e97a770594b, type: 3}
+  - {fileID: 4900000, guid: d94a1a562e61b45439992d0f8b30318f, type: 3}
+  - {fileID: 4900000, guid: 41ce1a5c1a2f375468e74fffdbff6b6c, type: 3}
   sceneNumber: 0
   dialogueBox: {fileID: 29361423}
   choiceButtons:
@@ -1010,6 +1013,7 @@ MonoBehaviour:
   buttonLoopCounter: 0
   character: 
   area: 
+  characterVisible: 1
   affection: 0
   sceneManagerScript: {fileID: 221570385}
   pause: 0
@@ -1044,7 +1048,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1069367358
 RectTransform:
   m_ObjectHideFlags: 0
