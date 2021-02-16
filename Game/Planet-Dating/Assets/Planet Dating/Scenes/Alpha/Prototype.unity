@@ -372,6 +372,7 @@ MonoBehaviour:
   characterBodies:
   - {fileID: 21300000, guid: 90456ae8f37168440a281c96a15b5227, type: 3}
   - {fileID: 21300000, guid: fcb9d7c44e497084584fc7471352c72c, type: 3}
+  - {fileID: 21300000, guid: 3c5f07492614e374881f0db6e2355f3a, type: 3}
   characterHeads:
   - {fileID: 2100000, guid: fdc962e0b5b5f594e96dbd4da39dd08e, type: 2}
   - {fileID: 2100000, guid: a0f581b20e5857843afb99697c921598, type: 2}
