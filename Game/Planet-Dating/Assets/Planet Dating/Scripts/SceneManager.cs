@@ -6,18 +6,22 @@ using UnityEngine.UI;
 public class SceneManager : MonoBehaviour {
 
     #region Variables
-    [Header("Canvas Elements")]
+    [Header("Canvas Elements Free Time")]
     public GameObject textBox;
     public GameObject character;
     Image characterBodyImage;
     MeshRenderer characterHeadMeshRend;
+    public Transform characterHeadPosition;
     public SpriteRenderer background;
+
+    [Header("Canvas Elements Bar")]
     public GameObject ingredientOrbit;
     public GameObject IngredientList;
 
     [Header("Art")]
     public List<Sprite> characterBodies = new List<Sprite>();
     public List<Material> characterHeads = new List<Material>();
+    public List<Sprite> backgrounds = new List<Sprite>();
 
     [Header("Scripts")]
     public InkTest inkManagerScript;
@@ -39,16 +43,20 @@ public class SceneManager : MonoBehaviour {
         if (areaName == "Bartending") {
             ingredientOrbit.SetActive(true);
             IngredientList.SetActive(true);
-            textBox.transform.localPosition = new Vector3(570, 283, 0); //move text box location
-            character.transform.localPosition = new Vector3(511, -359, 0); //move character location
+            textBox.transform.localPosition = new Vector3(0, -400, 0); //move text box location
+            character.transform.localPosition = new Vector3(721, -287, 0); //move character location
+            character.transform.localScale = new Vector3(-0.75f,0.75f,0.75f);
+            background.sprite = backgrounds[1];
             //change image of text box
             inkManagerScript.pause = true;
         }
         else if (areaName == "FreeTime") {
             ingredientOrbit.SetActive(false);
             IngredientList.SetActive(false);
-            textBox.transform.localPosition = new Vector3(308, -273, 0); //move text box location
-            character.transform.localPosition = new Vector3(-611, -161, 0); //move character location
+            textBox.transform.localPosition = new Vector3(0, -290, 0); //move text box location
+            character.transform.localPosition = new Vector3(375, -216, 0); //move character location
+            character.transform.localScale = new Vector3(-1, 1, 1);
+            background.sprite = backgrounds[0];
             //change text box image
         }
         else if (areaName == "Date") {
@@ -67,18 +75,16 @@ public class SceneManager : MonoBehaviour {
         if (characterName == "none") {
             character.SetActive(false);
         }
-        else if (characterName == "player") {
-            character.SetActive(true);
-            characterBodyImage.color = new Color(100,100,100);
-        }
         else if (characterName == "sol") {
             ChangeCharacterVariables(0);
+            characterHeadPosition.localPosition = new Vector3(60, 420, 10);
         }
         else if (characterName == "mercury") {
             ChangeCharacterVariables(1);
         }
         else if (characterName == "venus") {
             ChangeCharacterVariables(2);
+            characterHeadPosition.localPosition = new Vector3(-14, 306, 10);
 
             // fade out character and fade in new one with LERP?
             //if current character != characterName. change it and make current character = it
@@ -89,7 +95,7 @@ public class SceneManager : MonoBehaviour {
         character.SetActive(true);
         characterBodyImage.sprite = characterBodies[index];
         characterHeadMeshRend.material = characterHeads[index];
-        characterBodyImage.color = new Color(255, 255, 255);
+        //characterBodyImage.color = new Color(255, 255, 255);
     }
 
     public void ChangeBackground(string backgroundName) {
@@ -102,11 +108,11 @@ public class SceneManager : MonoBehaviour {
 
         if (visible == 0) {
             //add black overlaw
-            characterBodyImage.color = new Color(100, 100, 100);
+            characterBodyImage.color = Color.gray;
         }
         else if (visible == 1) {
             //remove black overlay
-            characterBodyImage.color = new Color(255, 255, 255);
+            characterBodyImage.color = new Color(1, 1, 1);
         }
     }
 
