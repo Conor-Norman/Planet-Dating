@@ -3,10 +3,16 @@ ScriptsOnlyBuild:
     Assembly-CSharp-Editor-firstpass.dll:
     - Ink.UnityIntegration.InkLibrary
     - Ink.UnityIntegration.InkSettings
+    Assembly-CSharp-firstpass.dll:
+    - QuitGameOnKeypress
     Assembly-CSharp.dll:
+    - BarManager
     - InkTest
     - SceneManager
+    Bolt.Core.Editor.dll:
+    - Bolt.VariablesWindow
     Bolt.Core.Runtime.dll:
+    - Bolt.SceneVariables
     - Bolt.Variables
     - Bolt.VariablesAsset
     Bolt.Flow.Runtime.dll:
@@ -14,6 +20,8 @@ ScriptsOnlyBuild:
     - Bolt.FlowMacro
     Ludiq.Core.Runtime.dll:
     - Ludiq.DictionaryAsset
+    Ludiq.Graphs.Editor.dll:
+    - Ludiq.GraphWindow
     Ludiq.PeekCore.Runtime.dll:
     - Ludiq.PeekCore.DictionaryAsset
     Unity.2D.Animation.Editor.dll:
@@ -75,41 +83,47 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 12312}
+      Script: {instanceID: 12316}
     - Class: 114
-      Script: {instanceID: 12360}
+      Script: {instanceID: 12366}
     - Class: 114
-      Script: {instanceID: 12980}
+      Script: {instanceID: 12986}
     - Class: 114
-      Script: {instanceID: 13092}
+      Script: {instanceID: 13098}
     - Class: 114
-      Script: {instanceID: 13590}
-    - Class: 114
-      Script: {instanceID: 13648}
+      Script: {instanceID: 13596}
     - Class: 114
       Script: {instanceID: 13650}
     - Class: 114
-      Script: {instanceID: 14396}
+      Script: {instanceID: 13654}
     - Class: 114
-      Script: {instanceID: 14502}
+      Script: {instanceID: 13656}
     - Class: 114
-      Script: {instanceID: 15044}
+      Script: {instanceID: 14404}
     - Class: 114
-      Script: {instanceID: 15046}
+      Script: {instanceID: 14510}
     - Class: 114
-      Script: {instanceID: 15944}
+      Script: {instanceID: 15052}
     - Class: 114
-      Script: {instanceID: 16590}
+      Script: {instanceID: 15054}
     - Class: 114
-      Script: {instanceID: 16616}
+      Script: {instanceID: 15386}
     - Class: 114
-      Script: {instanceID: 17210}
+      Script: {instanceID: 15952}
     - Class: 114
-      Script: {instanceID: 17408}
+      Script: {instanceID: 16598}
     - Class: 114
-      Script: {instanceID: 17992}
+      Script: {instanceID: 16624}
     - Class: 114
-      Script: {instanceID: 18640}
+      Script: {instanceID: 17218}
+    - Class: 114
+      Script: {instanceID: 17416}
+    - Class: 114
+      Script: {instanceID: 18000}
+    - Class: 114
+      Script: {instanceID: 18342}
+    - Class: 114
+      Script: {instanceID: 18650}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -303,7 +317,7 @@ ScriptsOnlyBuild:
     className: PhysicsRaycaster
   - hash:
       serializedVersion: 2
-      Hash: 3d2e6fdac88349ca080a6dc33888a74d
+      Hash: 717b56fd98e024d3c9d442e18a7beafa
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SceneManager
@@ -411,6 +425,12 @@ ScriptsOnlyBuild:
     className: Shadow
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ColorGradient
+  - hash:
+      serializedVersion: 2
       Hash: cc4274b586df3c02688bac01b88bd16c
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
@@ -513,7 +533,7 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
-      Hash: 61ee77cba07a3d5db9131b59796f2aab
+      Hash: b972db2e81ba61114d7043493e7b36ab
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: InkTest
@@ -693,6 +713,12 @@ ScriptsOnlyBuild:
     className: TMP_ColorGradient
   - hash:
       serializedVersion: 2
+      Hash: 3f3ccf852e87651e5e6daa26ffebad06
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BarManager
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
@@ -778,4 +804,4 @@ ScriptsOnlyBuild:
   platform: 5
   scenePathNames:
   - Assets/Planet Dating/Scenes/Alpha/Prototype.unity
-  playerPath: C:/Users/ghost/Desktop/Alpha Build/Planet-Dating.exe
+  playerPath: C:/Users/ghost/Desktop/Cosmic Crush V 0.1/Planet-Dating.exe

@@ -41,7 +41,7 @@ InputManager:
     m_Name: Progress
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: return
+    negativeButton: 
     positiveButton: space
     altNegativeButton: mouse 0
     altPositiveButton: enter

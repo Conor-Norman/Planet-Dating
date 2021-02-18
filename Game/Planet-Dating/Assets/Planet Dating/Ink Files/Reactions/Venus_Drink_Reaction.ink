@@ -36,6 +36,8 @@ This is exactly what I was hoping for!
 You're an absolute doll, love you!
 I gotta run, but I'll see you around, sugar!
 
+THANK YOU FOR PLAYING OUR DEMO! PRESS ESC TO EXIT
+
     ->END
 
 
@@ -49,6 +51,8 @@ Not quite what I was hoping for, but it works.
 Thanks anyway, sweetie, I really appreciate the effort.
 See you later!
 
+THANK YOU FOR PLAYING OUR DEMO! PRESS ESC TO EXIT
+
     ->END
     
 ==WayOff
@@ -60,6 +64,7 @@ Ugh...really?
 This isn't what I asked for.
 Nevermind. I guess I'll try a different bar.
 
+THANK YOU FOR PLAYING OUR DEMO! PRESS ESC TO EXIT
     ->END
     
 ===function changeName(newName) ===

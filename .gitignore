@@ -61,3 +61,4 @@ crashlytics-build.properties
 #custom ignores as files are too large
 *shardeassets0.assets.resS
 
+Game/Planet-Dating/Library/PlayerDataCache/Win/Data/sharedassets0.assets.resS

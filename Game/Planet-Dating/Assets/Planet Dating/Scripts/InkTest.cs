@@ -16,6 +16,7 @@ public class InkTest : MonoBehaviour {
 
     [Header("Canvas")]
     public TMP_Text dialogueBox;
+    public TMP_Text characterNameText;
     public List<GameObject> choiceButtons = new List<GameObject>();
     public int buttonLoopCounter;
 
@@ -165,6 +166,7 @@ public class InkTest : MonoBehaviour {
         characterTemp = (string)story.EvaluateFunction("changeCharacter");
         if (characterTemp != character) {
             character = characterTemp;
+            ChangeCharacterName(character);
             sceneManagerScript.ChangeCharacter(character);
         }
 
@@ -193,6 +195,15 @@ public class InkTest : MonoBehaviour {
 
     public void SetMinimalIngredients(int amount) {
         story.EvaluateFunction("setMinimalIngredients", amount);
+    }
+
+    void ChangeCharacterName(string characterName) {
+        if (characterName == "none") {
+            characterNameText.text = "You";
+        }
+        else {
+            characterNameText.text = characterName;
+        }
     }
 
     #endregion

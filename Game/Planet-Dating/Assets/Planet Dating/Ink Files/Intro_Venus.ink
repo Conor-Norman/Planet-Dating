@@ -16,7 +16,7 @@ VAR minimalIngredients = 0
 
 ==WaitAtBar
 
-~ area = "FreeTime"
+~ area = "lounge"
 ~character = "none"
 
 (It's fairly slow right now. Not many customers seem to be coming by the bar, and Sol's handling the few who do. )
@@ -29,12 +29,11 @@ VAR minimalIngredients = 0
 (I push off of the counter and scramble to make myself look busy, hoping they hadn't noticed me staring.)
 (After a moment, I risk peaking up. My heart speeds up as I see them approaching the bar.)
 
-    +[ >> ]
     ->VenusIntroduction
     
 ==VenusIntroduction
 
-~character = "venus"
+~character = "Venus"
 ~pose = "neutral"
 ~characterVisibility = 1
 
@@ -203,7 +202,7 @@ Look, I'll just make this nice and easy for you, since you're new.
 ~idealIngredient2 = 3
 ~idealIngredient3 = 0
 ~minimalIngredients = 1
-~ area = "Bartending"
+~ area = "bartending"
 Can you just get me anything that shines, sweetie? You're an absolute babe, thanks, hun. I'll be waiting.
 
 =->END

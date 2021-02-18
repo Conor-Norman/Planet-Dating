@@ -25,7 +25,7 @@ VAR background = ""
 # START
 
 ~background = "bar"
-~ area = "FreeTime"
+~ area = "lounge"
 ~character = "none"
 Hello, my name is {players_name}.
 My preferred pronouns are:
@@ -66,7 +66,7 @@ They seemed nice during our Signal Calls, though.
     
 
 == SolIntro
-~character = "sol"
+~character = "Sol"
 ~pose = "neutral"
 ~characterVisibility = 1
 My apologies, stranger. The Lounge will be opening shortly.

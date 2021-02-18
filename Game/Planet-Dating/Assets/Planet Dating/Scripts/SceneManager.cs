@@ -10,6 +10,7 @@ public class SceneManager : MonoBehaviour {
     public GameObject textBox;
     public GameObject character;
     Image characterBodyImage;
+    public Material planetHeadOverlay;
     MeshRenderer characterHeadMeshRend;
     public Transform characterHeadPosition;
     public SpriteRenderer background;
@@ -40,7 +41,7 @@ public class SceneManager : MonoBehaviour {
 
         //fade to black
 
-        if (areaName == "Bartending") {
+        if (areaName == "bartending") {
             ingredientOrbit.SetActive(true);
             IngredientList.SetActive(true);
             textBox.transform.localPosition = new Vector3(0, -400, 0); //move text box location
@@ -50,16 +51,24 @@ public class SceneManager : MonoBehaviour {
             //change image of text box
             inkManagerScript.pause = true;
         }
-        else if (areaName == "FreeTime") {
+        else if (areaName == "lounge") {
             ingredientOrbit.SetActive(false);
             IngredientList.SetActive(false);
             textBox.transform.localPosition = new Vector3(0, -290, 0); //move text box location
-            character.transform.localPosition = new Vector3(375, -216, 0); //move character location
-            character.transform.localScale = new Vector3(-1, 1, 1);
+            character.transform.localPosition = new Vector3(0, -216, 0); //move character location
+            character.transform.localScale = new Vector3(1, 1, 1);
             background.sprite = backgrounds[0];
             //change text box image
         }
-        else if (areaName == "Date") {
+        else if (areaName == "freetime") {
+            ingredientOrbit.SetActive(false);
+            IngredientList.SetActive(false);
+            //show character list on screen with pictures
+            //move text box location
+            //move character location
+            //change textbox image
+        }
+        else if (areaName == "date") {
             ingredientOrbit.SetActive(false);
             IngredientList.SetActive(false);
             //move text box location
@@ -75,14 +84,14 @@ public class SceneManager : MonoBehaviour {
         if (characterName == "none") {
             character.SetActive(false);
         }
-        else if (characterName == "sol") {
+        else if (characterName == "Sol") {
             ChangeCharacterVariables(0);
             characterHeadPosition.localPosition = new Vector3(60, 420, 10);
         }
-        else if (characterName == "mercury") {
+        else if (characterName == "Mercury") {
             ChangeCharacterVariables(1);
         }
-        else if (characterName == "venus") {
+        else if (characterName == "Venus") {
             ChangeCharacterVariables(2);
             characterHeadPosition.localPosition = new Vector3(-14, 306, 10);
 
@@ -108,11 +117,13 @@ public class SceneManager : MonoBehaviour {
 
         if (visible == 0) {
             //add black overlaw
-            characterBodyImage.color = Color.gray;
+            characterBodyImage.color = new Color(0.3f, 0.3f, 0.3f);
+            planetHeadOverlay.color = new Color(0, 0, 0,0.66f);
         }
         else if (visible == 1) {
             //remove black overlay
             characterBodyImage.color = new Color(1, 1, 1);
+            planetHeadOverlay.color = new Color(0, 0, 0, 0);
         }
     }
 

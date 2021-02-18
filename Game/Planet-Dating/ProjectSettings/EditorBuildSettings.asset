@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Planet Dating/Scenes/Alpha/Prototype Bak.unity
-    guid: 08dbbecfad20e9744a09df85edd7a718
+    path: Assets/Planet Dating/Scenes/Alpha/Prototype.unity
+    guid: 56c14caa78cac8549bfbb9f20e30de29
   m_configObjects: {}
