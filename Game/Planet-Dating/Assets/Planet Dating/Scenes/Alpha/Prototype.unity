@@ -1268,6 +1268,7 @@ MonoBehaviour:
   affection: 0
   sceneManagerScript: {fileID: 221570385}
   pause: 0
+  textTypeOutSeconds: 0.02
 --- !u!4 &904470206
 Transform:
   m_ObjectHideFlags: 0

@@ -38,6 +38,8 @@ public class InkTest : MonoBehaviour {
     [Header("Variables")]
     public bool pause;
     bool progressPressed = false;
+    public float textTypeOutSeconds;
+    bool animatingText;
 
     #endregion
 
@@ -71,7 +73,7 @@ public class InkTest : MonoBehaviour {
 
     #region Story Running Functions
     void InputCheck() {
-        if ((Input.GetAxis("Progress") > 0 || Input.GetAxis("Progress") < 0) && !progressPressed) {
+        if ((Input.GetAxis("Progress") > 0 || Input.GetAxis("Progress") < 0) && !progressPressed && !animatingText) {
             progressPressed = true;
 
             CheckForSceneChanges();
@@ -86,11 +88,11 @@ public class InkTest : MonoBehaviour {
 
         string text = "";
 
-        if (story.canContinue) {
-            text = story.Continue(); //may want to remove maximally if player will click through
-        }
-        else if (story.currentChoices.Count > 0) {
+        if (story.currentChoices.Count > 0) {
             EnableButtons();
+        }
+        else if (story.canContinue) {
+            text = story.Continue();
         }
         else {
 
@@ -138,7 +140,7 @@ public class InkTest : MonoBehaviour {
     }
     #endregion
 
-    #region Ink Variables
+    #region Ink Functions
 
     public void ChangeInkFile() {
         sceneNumber++;
@@ -155,7 +157,8 @@ public class InkTest : MonoBehaviour {
     }
     void CheckForSceneChanges() {
 
-        dialogueBox.text = LoadStory(); //displaying text after choice
+        dialogueBox.text = LoadStory(); //displaying text after click
+        StartCoroutine("PlayText");
 
         areaTemp = (string)story.EvaluateFunction("getArea");
         if (areaTemp != area) {
@@ -175,6 +178,20 @@ public class InkTest : MonoBehaviour {
             characterVisible = characterVisibleTemp;
             sceneManagerScript.ChangeVisibility(characterVisible);
         }
+    }
+
+    IEnumerator PlayText() {
+        string story = dialogueBox.text;
+        dialogueBox.text = "";
+        animatingText = true;
+
+        foreach (char c in story) {
+            dialogueBox.text += c;
+            yield return new WaitForSeconds(textTypeOutSeconds);
+        }
+
+        animatingText = false;
+        Debug.Log("finished typing");
     }
 
     public int[] GetIdealDrink() {

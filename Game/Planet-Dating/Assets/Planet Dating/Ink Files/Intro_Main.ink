@@ -25,9 +25,9 @@ VAR background = ""
 # START
 
 ~background = "bar"
-~ area = "lounge"
+~area = "lounge"
 ~character = "none"
-Hello, my name is {players_name}.
+
 My preferred pronouns are:
     +[He/Him]
         ~pronoun1 = he

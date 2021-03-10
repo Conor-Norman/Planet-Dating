@@ -10,7 +10,7 @@ VAR minimalIngredients = 0
 VAR matchingIngredientCount = 0
 
 
-~ area = "FreeTime"
+~ area = "lounge"
 
 well lets have a taste
 
@@ -27,7 +27,7 @@ well lets have a taste
 
 
 ==PerfectDrink
-~character = "venus"
+~character = "Venus"
 ~pose = "neutral"
 ~venusAffection+=2
 ~characterVisibility = 1
@@ -42,7 +42,7 @@ THANK YOU FOR PLAYING OUR DEMO! PRESS ESC TO EXIT
 
 
 ==Almost
-~character = "venus"
+~character = "Venus"
 ~pose = "neutral"
 ~venusAffection++
 ~characterVisibility = 1
@@ -56,7 +56,7 @@ THANK YOU FOR PLAYING OUR DEMO! PRESS ESC TO EXIT
     ->END
     
 ==WayOff
-~character = "venus"
+~character = "Venus"
 ~pose = "neutral"
 ~venusAffection--
 ~characterVisibility = 1
