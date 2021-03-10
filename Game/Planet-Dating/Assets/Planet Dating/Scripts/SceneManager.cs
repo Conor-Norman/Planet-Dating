@@ -81,6 +81,9 @@ public class SceneManager : MonoBehaviour {
 
     public void ChangeCharacter(string characterName) {
 
+        //fade character here then change and fade character back in at end
+
+
         if (characterName == "none") {
             character.SetActive(false);
         }
@@ -94,10 +97,10 @@ public class SceneManager : MonoBehaviour {
         else if (characterName == "Venus") {
             ChangeCharacterVariables(2);
             characterHeadPosition.localPosition = new Vector3(-14, 306, 10);
-
-            // fade out character and fade in new one with LERP?
-            //if current character != characterName. change it and make current character = it
         }
+
+        //fade in new one with LERP?
+        //if current character != characterName. change it and make current character = it
     }
 
     void ChangeCharacterVariables(int index) {

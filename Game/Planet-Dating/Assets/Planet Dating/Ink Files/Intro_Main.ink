@@ -28,7 +28,7 @@ VAR background = ""
 ~area = "lounge"
 ~character = "none"
 
-My preferred pronouns are:
+_My preferred pronouns are:
     +[He/Him]
         ~pronoun1 = he
         ~pronoun2 = him

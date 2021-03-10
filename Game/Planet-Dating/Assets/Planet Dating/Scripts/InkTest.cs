@@ -38,7 +38,7 @@ public class InkTest : MonoBehaviour {
     [Header("Variables")]
     public bool pause;
     bool progressPressed = false;
-    public float textTypeOutSeconds;
+    float textTypeOutSeconds;
     bool animatingText;
 
     #endregion
@@ -48,6 +48,8 @@ public class InkTest : MonoBehaviour {
     void Start() {
 
         //sceneNumber = 0; //start of game will be changed based on main menu selection
+
+        textTypeOutSeconds = 0.02f;
 
         story = new Story(inkFiles[sceneNumber].text);
 
@@ -77,6 +79,9 @@ public class InkTest : MonoBehaviour {
             progressPressed = true;
 
             CheckForSceneChanges();
+        }
+        else if ((Input.GetAxis("Progress") > 0 || Input.GetAxis("Progress") < 0) && !progressPressed && animatingText) {
+            textTypeOutSeconds = 0;
         }
         else if (Input.GetAxis("Progress") == 0) {
             progressPressed = false;
@@ -191,7 +196,7 @@ public class InkTest : MonoBehaviour {
         }
 
         animatingText = false;
-        Debug.Log("finished typing");
+        textTypeOutSeconds = 0.02f;
     }
 
     public int[] GetIdealDrink() {
