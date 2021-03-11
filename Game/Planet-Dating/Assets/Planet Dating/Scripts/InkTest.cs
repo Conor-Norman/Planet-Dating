@@ -40,6 +40,8 @@ public class InkTest : MonoBehaviour {
     bool progressPressed = false;
     float textTypeOutSeconds;
     bool animatingText;
+    bool animateText;
+    string currentDialogue;
 
     #endregion
 
@@ -95,8 +97,11 @@ public class InkTest : MonoBehaviour {
 
         if (story.currentChoices.Count > 0) {
             EnableButtons();
+            animateText = false;
+            //text = currentDialogue; //// take away comment when the new choice boxes are added in ======================================================================================================
         }
         else if (story.canContinue) {
+            animateText = true;
             text = story.Continue();
         }
         else {
@@ -163,7 +168,10 @@ public class InkTest : MonoBehaviour {
     void CheckForSceneChanges() {
 
         dialogueBox.text = LoadStory(); //displaying text after click
-        StartCoroutine("PlayText");
+       
+        if (animateText) {
+            StartCoroutine("PlayText");
+        }
 
         areaTemp = (string)story.EvaluateFunction("getArea");
         if (areaTemp != area) {
@@ -186,15 +194,16 @@ public class InkTest : MonoBehaviour {
     }
 
     IEnumerator PlayText() {
-        string story = dialogueBox.text;
+        currentDialogue = dialogueBox.text;
         dialogueBox.text = "";
         animatingText = true;
 
-        foreach (char c in story) {
+        foreach (char c in currentDialogue) {
             dialogueBox.text += c;
             yield return new WaitForSeconds(textTypeOutSeconds);
         }
 
+        yield return new WaitForSeconds(0.1f); //removes accidentaly progress for when the text completes fast
         animatingText = false;
         textTypeOutSeconds = 0.02f;
     }

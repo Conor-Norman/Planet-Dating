@@ -166,7 +166,7 @@ But, I wish you good luck. i'll be nearby if you need me.
 ===function getCharacterVisible===
 ~return characterVisibility
 
-===function getAffection===
+===function getSolAffection===
 ~return solAffection
 
 ===function getArea===
