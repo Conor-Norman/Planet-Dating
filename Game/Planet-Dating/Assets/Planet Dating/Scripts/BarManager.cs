@@ -15,7 +15,7 @@ public class BarManager : MonoBehaviour {
     public int matchingIngredientsCount;
 
     [Header("Scripts")]
-    public InkTest inkManagerScript;
+    public InkManager inkManagerScript;
 
     #endregion
 

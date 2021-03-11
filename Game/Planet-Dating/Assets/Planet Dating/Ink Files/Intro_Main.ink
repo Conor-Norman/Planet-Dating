@@ -13,7 +13,10 @@ VAR pronoun3 = their
 VAR players_name = "protag"
 
 VAR solAffection = 0
-VAR BartendingPoints = 0
+VAR mercuryAffection = 0
+VAR venusAffection = 0
+VAR earthAffection = 0
+VAR bartendingPoints = 0
 
 VAR character = ""
 VAR characterVisibility = 0
@@ -168,6 +171,18 @@ But, I wish you good luck. i'll be nearby if you need me.
 
 ===function getSolAffection===
 ~return solAffection
+
+===function getMercuryAffection===
+~return mercuryAffection
+
+===function getVenusAffection===
+~return venusAffection
+
+===function getEarthAffection===
+~return earthAffection
+
+===function getBartendingPoints===
+~return bartendingPoints
 
 ===function getArea===
 ~return area

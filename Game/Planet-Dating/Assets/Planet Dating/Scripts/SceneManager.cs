@@ -25,7 +25,7 @@ public class SceneManager : MonoBehaviour {
     public List<Sprite> backgrounds = new List<Sprite>();
 
     [Header("Scripts")]
-    public InkTest inkManagerScript;
+    public InkManager inkManagerScript;
 
     #endregion
 

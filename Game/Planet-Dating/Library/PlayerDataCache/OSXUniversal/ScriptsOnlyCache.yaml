@@ -9,8 +9,6 @@ ScriptsOnlyBuild:
     - BarManager
     - InkTest
     - SceneManager
-    Bolt.Core.Editor.dll:
-    - Bolt.VariablesWindow
     Bolt.Core.Runtime.dll:
     - Bolt.SceneVariables
     - Bolt.Variables
@@ -804,4 +802,4 @@ ScriptsOnlyBuild:
   platform: 2
   scenePathNames:
   - Assets/Planet Dating/Scenes/Alpha/Prototype.unity
-  playerPath: C:/Users/ghost/Downloads/Cosmic Crush V 0.12.app
+  playerPath: C:/Users/ghost/Desktop/Cosmic Crush 0.13.app
