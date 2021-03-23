@@ -8,11 +8,21 @@ using TMPro;
 public class InkManager : MonoBehaviour {
     #region Variables
 
-    [Header("ink JSON files")]
-    //public TextAsset inkJSON;
     public Story story;
-    public List<TextAsset> inkFiles = new List<TextAsset>();
-    public int sceneNumber;
+
+    [Header("Ink JSON files")]
+    public List<TextAsset> shiftFiles = new List<TextAsset>();
+    public List<TextAsset> introFiles = new List<TextAsset>();
+    public List<TextAsset> earthFreeTimeFiles = new List<TextAsset>();
+    public List<TextAsset> mercuryFreeTimeFiles = new List<TextAsset>();
+    public List<TextAsset> venusFreeTimeFiles = new List<TextAsset>();
+    public List<TextAsset> earthLoungeFiles = new List<TextAsset>();
+    public List<TextAsset> mercuryLoungeFiles = new List<TextAsset>();
+    public List<TextAsset> venusLoungeFiles = new List<TextAsset>();
+    public List<TextAsset> drinkReactionFiles = new List<TextAsset>();
+    public List<TextAsset> overtimeFiles = new List<TextAsset>();
+    public List<TextAsset> helpFiles = new List<TextAsset>();
+    public List<TextAsset> dateFiles = new List<TextAsset>();
 
     [Header("Canvas")]
     public TMP_Text dialogueBox;
@@ -29,9 +39,6 @@ public class InkManager : MonoBehaviour {
     public int characterVisible = 1;
     int characterVisibleTemp;
 
-    [Header("Stats")]
-    public int affection;
-
     [Header("Scripts")]
     public SceneManager sceneManagerScript;
 
@@ -42,6 +49,9 @@ public class InkManager : MonoBehaviour {
     bool animatingText;
     bool animateText;
     string currentDialogue;
+    int dayCount;
+    string currentEvent;
+    int conversationsHad;
 
     [Header("InkVariables")]
     int solAffection;
@@ -60,7 +70,8 @@ public class InkManager : MonoBehaviour {
 
         textTypeOutSeconds = 0.02f;
 
-        story = new Story(inkFiles[sceneNumber].text);
+        story = new Story(shiftFiles[0].text);
+        currentEvent = "Shift";
 
         CheckForSceneChanges();
 
@@ -113,8 +124,7 @@ public class InkManager : MonoBehaviour {
         }
         else {
 
-            ChangeInkFile();
-            //move to next scene or something by changing where the list is pointing
+            CheckWhatsNextEvent();
         }
         return text;
     }
@@ -159,14 +169,12 @@ public class InkManager : MonoBehaviour {
 
     #region Ink Functions
 
-    public void ChangeInkFile() {
+    void ChangeInkFile(TextAsset nextScene) {
 
         //save variables from previous scene here
         saveVariables();
 
-        sceneNumber++; //change when scene number variables are in ===============================================================================================================
-
-        story = new Story(inkFiles[sceneNumber].text); //gets json file of scene
+        story = new Story(nextScene.text); //gets json file of scene
 
         loadVariables();
 
@@ -176,6 +184,114 @@ public class InkManager : MonoBehaviour {
 
         story.EvaluateFunction("changeName", "Protag"); //changes the players name in ink (change protag to the actual name from fariables script)
     }
+
+
+
+    public void CheckWhatsNextEvent() {
+
+        if (area == "bartending") {
+           
+            conversationsHad++;
+
+            if (character == "Earth") {
+                ChangeInkFile(drinkReactionFiles[0]);
+                return;
+            }
+            else if (character == "Mercury") {
+                ChangeInkFile(drinkReactionFiles[1]);
+                return;
+            }
+            else if (character == "Venus") {
+                ChangeInkFile(drinkReactionFiles[2]);
+                return;
+            }
+        }
+
+        //for day 0 stuff
+        if (currentEvent == "ShiftStart" && dayCount == 0) {
+
+            currentEvent = "Intro";
+            ChangeInkFile(introFiles[0]);
+            return;
+        }
+        else if (currentEvent == "Intro" && dayCount == 0 && conversationsHad < 3) {
+            ChangeInkFile(introFiles[conversationsHad]);
+            conversationsHad++;
+            return;
+        }
+        else if (currentEvent == "Intro" && dayCount == 0 && conversationsHad >= 3) {
+            ChangeInkFile(shiftFiles[1]);
+            conversationsHad = 0;
+            currentEvent = "ShiftEnd";
+            return;
+        }
+        
+        if (currentEvent == "ShiftEnd" || (currentEvent == "FreeTime" && conversationsHad < 2)) {
+            //change to free time
+            if (character == "Earth") {
+                currentEvent = "FreeTime";
+                conversationsHad++;
+                ChangeInkFile(earthFreeTimeFiles[dayCount]);
+            }
+            else if (character == "Mercury") {
+                currentEvent = "FreeTime";
+                conversationsHad++;
+                ChangeInkFile(mercuryFreeTimeFiles[dayCount]);
+            }
+            else if (character == "Venus") {
+                currentEvent = "FreeTime";
+                conversationsHad++;
+                ChangeInkFile(venusFreeTimeFiles[dayCount]);
+            }
+        }
+        else if (currentEvent == "FreeTime" && conversationsHad >=2) {
+            //next day
+            dayCount++;
+            currentEvent = "ShiftStart";
+        }
+
+        if (currentEvent == "ShiftStart" && dayCount > 0) {
+            currentEvent = "Lounge";
+            //randomize order of character appearing all 3 will play
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     void saveVariables() {
         //affection, bartending points
@@ -192,6 +308,7 @@ public class InkManager : MonoBehaviour {
         story.EvaluateFunction("setMercuryAffection", mercuryAffection);
         story.EvaluateFunction("setVenusAffection", venusAffection);
         story.EvaluateFunction("setEarthAffection", earthAffection);
+        story.EvaluateFunction("setBartendingPoints", bartendingPoints);
     }
 
     void CheckForSceneChanges() {

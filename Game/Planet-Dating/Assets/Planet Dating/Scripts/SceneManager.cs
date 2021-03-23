@@ -42,6 +42,7 @@ public class SceneManager : MonoBehaviour {
         //fade to black
 
         if (areaName == "bartending") {
+            inkManagerScript.pause = true;
             ingredientOrbit.SetActive(true);
             IngredientList.SetActive(true);
             textBox.transform.localPosition = new Vector3(0, -400, 0); //move text box location
@@ -49,7 +50,6 @@ public class SceneManager : MonoBehaviour {
             character.transform.localScale = new Vector3(-0.75f,0.75f,0.75f);
             background.sprite = backgrounds[1];
             //change image of text box
-            inkManagerScript.pause = true;
         }
         else if (areaName == "lounge") {
             ingredientOrbit.SetActive(false);
@@ -98,10 +98,14 @@ public class SceneManager : MonoBehaviour {
             ChangeCharacterVariables(2);
             characterHeadPosition.localPosition = new Vector3(-14, 306, 10);
         }
+        else if (characterName == "Earth") {
+            ChangeCharacterVariables(3);
+            characterHeadPosition.localPosition = new Vector3(47, 315, 10);
+        }
 
-        //fade in new one with LERP?
-        //if current character != characterName. change it and make current character = it
-    }
+            //fade in new one with LERP?
+            //if current character != characterName. change it and make current character = it
+        }
 
     void ChangeCharacterVariables(int index) {
         character.SetActive(true);

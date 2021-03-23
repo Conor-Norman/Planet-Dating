@@ -456,12 +456,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 90456ae8f37168440a281c96a15b5227, type: 3}
   - {fileID: 21300000, guid: fcb9d7c44e497084584fc7471352c72c, type: 3}
   - {fileID: 21300000, guid: 3c5f07492614e374881f0db6e2355f3a, type: 3}
+  - {fileID: 21300000, guid: 9415fbdb3d273524384f185819678196, type: 3}
   characterHeads:
   - {fileID: 2100000, guid: fdc962e0b5b5f594e96dbd4da39dd08e, type: 2}
-  - {fileID: 2100000, guid: a0f581b20e5857843afb99697c921598, type: 2}
+  - {fileID: 0}
   - {fileID: 2100000, guid: 8adf791f1fdedf044a552491aca35671, type: 2}
+  - {fileID: 2100000, guid: a0f581b20e5857843afb99697c921598, type: 2}
   backgrounds:
-  - {fileID: 21300000, guid: 00892c9f58c643441a9b6901082a645f, type: 3}
+  - {fileID: 21300000, guid: e7755064a02f8ee41bfa0b0f3b73b76b, type: 3}
   - {fileID: 21300000, guid: 04db9f603f463ee418a9946b2a7824d0, type: 3}
   inkManagerScript: {fileID: 904470205}
 --- !u!4 &221570386
@@ -1250,11 +1252,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 140070c86c701f847baa0920bc348163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inkFiles:
+  shiftFiles:
   - {fileID: 4900000, guid: 9716194f41c085144ab83e97a770594b, type: 3}
+  introFiles:
   - {fileID: 4900000, guid: d94a1a562e61b45439992d0f8b30318f, type: 3}
-  - {fileID: 4900000, guid: 41ce1a5c1a2f375468e74fffdbff6b6c, type: 3}
-  sceneNumber: 0
+  - {fileID: 4900000, guid: ec7c71aeffa1fac4784b154da718e8bf, type: 3}
+  - {fileID: 4900000, guid: d94a1a562e61b45439992d0f8b30318f, type: 3}
+  earthFreeTimeFiles: []
+  mercuryFreeTimeFiles: []
+  venusFreeTimeFiles: []
+  earthLoungeFiles: []
+  mercuryLoungeFiles: []
+  venusLoungeFiles: []
+  drinkReactionFiles:
+  - {fileID: 4900000, guid: 80e7524edeb6c5b4caffbc4e9624dad5, type: 3}
+  - {fileID: 4900000, guid: 3c84adc6513b0ac44af851a526500e65, type: 3}
+  - {fileID: 4900000, guid: 80e7524edeb6c5b4caffbc4e9624dad5, type: 3}
+  overtimeFiles: []
+  helpFiles: []
+  dateFiles: []
   dialogueBox: {fileID: 29361423}
   characterNameText: {fileID: 1685231197}
   choiceButtons:
@@ -1265,7 +1281,6 @@ MonoBehaviour:
   character: 
   area: 
   characterVisible: 1
-  affection: 0
   sceneManagerScript: {fileID: 221570385}
   pause: 0
 --- !u!4 &904470206
@@ -1894,13 +1909,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1702982486}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1500}
-  m_LocalScale: {x: 102.45212, y: 102.45212, z: 102.45212}
+  m_LocalScale: {x: 35.969265, y: 35.969265, z: 35.969265}
   m_Children: []
   m_Father: {fileID: 1790719106}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1702982488
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1941,7 +1956,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 00892c9f58c643441a9b6901082a645f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e7755064a02f8ee41bfa0b0f3b73b76b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
