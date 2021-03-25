@@ -7,7 +7,7 @@ public class BarManager : MonoBehaviour {
 
     [Header("Variables")]
     int[] idealIngredients;
-    int[] selectedIngredients;
+    public int[] selectedIngredients;
     public int orbitIngredient1;
     public int orbitIngredient2;
     public int orbitIngredient3;

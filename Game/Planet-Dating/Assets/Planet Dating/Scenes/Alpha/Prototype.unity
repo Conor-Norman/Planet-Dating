@@ -1234,7 +1234,7 @@ GameObject:
   - component: {fileID: 904470206}
   - component: {fileID: 904470205}
   m_Layer: 0
-  m_Name: Text Manager
+  m_Name: Ink Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1252,12 +1252,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 140070c86c701f847baa0920bc348163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shiftFiles:
-  - {fileID: 4900000, guid: 9716194f41c085144ab83e97a770594b, type: 3}
   introFiles:
+  - {fileID: 4900000, guid: 9716194f41c085144ab83e97a770594b, type: 3}
   - {fileID: 4900000, guid: d94a1a562e61b45439992d0f8b30318f, type: 3}
   - {fileID: 4900000, guid: ec7c71aeffa1fac4784b154da718e8bf, type: 3}
   - {fileID: 4900000, guid: d94a1a562e61b45439992d0f8b30318f, type: 3}
+  shiftFiles:
+  - {fileID: 0}
   earthFreeTimeFiles: []
   mercuryFreeTimeFiles: []
   venusFreeTimeFiles: []
@@ -1283,6 +1284,7 @@ MonoBehaviour:
   characterVisible: 1
   sceneManagerScript: {fileID: 221570385}
   pause: 0
+  demo: 0
 --- !u!4 &904470206
 Transform:
   m_ObjectHideFlags: 0

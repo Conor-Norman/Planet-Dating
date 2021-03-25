@@ -11,8 +11,9 @@ public class InkManager : MonoBehaviour {
     public Story story;
 
     [Header("Ink JSON files")]
-    public List<TextAsset> shiftFiles = new List<TextAsset>();
     public List<TextAsset> introFiles = new List<TextAsset>();
+    public List<TextAsset> shiftStartFiles = new List<TextAsset>();
+    public List<TextAsset> shiftEndFiles = new List<TextAsset>();
     public List<TextAsset> earthFreeTimeFiles = new List<TextAsset>();
     public List<TextAsset> mercuryFreeTimeFiles = new List<TextAsset>();
     public List<TextAsset> venusFreeTimeFiles = new List<TextAsset>();
@@ -23,6 +24,7 @@ public class InkManager : MonoBehaviour {
     public List<TextAsset> overtimeFiles = new List<TextAsset>();
     public List<TextAsset> helpFiles = new List<TextAsset>();
     public List<TextAsset> dateFiles = new List<TextAsset>();
+    List<TextAsset> dailyLounge = new List<TextAsset>();
 
     [Header("Canvas")]
     public TMP_Text dialogueBox;
@@ -52,6 +54,7 @@ public class InkManager : MonoBehaviour {
     int dayCount;
     string currentEvent;
     int conversationsHad;
+    public bool demo;
 
     [Header("InkVariables")]
     int solAffection;
@@ -70,8 +73,8 @@ public class InkManager : MonoBehaviour {
 
         textTypeOutSeconds = 0.02f;
 
-        story = new Story(shiftFiles[0].text);
-        currentEvent = "Shift";
+        story = new Story(shiftStartFiles[dayCount].text);
+        currentEvent = "ShiftStart";
 
         CheckForSceneChanges();
 
@@ -123,8 +126,9 @@ public class InkManager : MonoBehaviour {
             text = story.Continue();
         }
         else {
-
+            
             CheckWhatsNextEvent();
+            
         }
         return text;
     }
@@ -176,7 +180,7 @@ public class InkManager : MonoBehaviour {
 
         story = new Story(nextScene.text); //gets json file of scene
 
-        loadVariables();
+        loadVariables(); //add back in in full version ============================================================================================================================================================================================================
 
         pause = false;
 
@@ -189,9 +193,8 @@ public class InkManager : MonoBehaviour {
 
     public void CheckWhatsNextEvent() {
 
+        //reaction events
         if (area == "bartending") {
-           
-            conversationsHad++;
 
             if (character == "Earth") {
                 ChangeInkFile(drinkReactionFiles[0]);
@@ -205,27 +208,34 @@ public class InkManager : MonoBehaviour {
                 ChangeInkFile(drinkReactionFiles[2]);
                 return;
             }
+            //sceneManagerScript.ChangeArea("lounge");
         }
 
         //for day 0 stuff
         if (currentEvent == "ShiftStart" && dayCount == 0) {
 
             currentEvent = "Intro";
-            ChangeInkFile(introFiles[0]);
+            ChangeInkFile(introFiles[1]);
+            conversationsHad++;
             return;
         }
         else if (currentEvent == "Intro" && dayCount == 0 && conversationsHad < 3) {
-            ChangeInkFile(introFiles[conversationsHad]);
+            ChangeInkFile(introFiles[conversationsHad+1]);
             conversationsHad++;
             return;
         }
         else if (currentEvent == "Intro" && dayCount == 0 && conversationsHad >= 3) {
-            ChangeInkFile(shiftFiles[1]);
+            ChangeInkFile(shiftEndFiles[dayCount]);
             conversationsHad = 0;
             currentEvent = "ShiftEnd";
             return;
         }
-        
+
+        //add area to select what characters the player will want to talk to. change scenemanager area to free time to display choices
+
+
+
+        //free time events
         if (currentEvent == "ShiftEnd" || (currentEvent == "FreeTime" && conversationsHad < 2)) {
             //change to free time
             if (character == "Earth") {
@@ -246,18 +256,46 @@ public class InkManager : MonoBehaviour {
         }
         else if (currentEvent == "FreeTime" && conversationsHad >=2) {
             //next day
-            dayCount++;
-            currentEvent = "ShiftStart";
+
+            if (!demo) {
+                dayCount++;
+                currentEvent = "ShiftStart";
+                dailyLounge[0] = earthLoungeFiles[dayCount - 1];
+                dailyLounge[1] = mercuryLoungeFiles[dayCount - 1];
+                dailyLounge[2] = venusLoungeFiles[dayCount - 1];
+
+                RandomizeList(dailyLounge);
+                //randomize lounge list here
+            }         
         }
 
-        if (currentEvent == "ShiftStart" && dayCount > 0) {
+
+        //shift start events
+        if (currentEvent == "ShiftStart" && dayCount > 0 && conversationsHad < 3) {
             currentEvent = "Lounge";
+            
+        }
+        else if (currentEvent == "Lounge" && dayCount > 0 && conversationsHad < 3) {
             //randomize order of character appearing all 3 will play
+            //create a list referenceing earthLoungeFiles[dayCount-1] for each planet and randomize that array
+            ChangeInkFile(dailyLounge[conversationsHad]);
+            conversationsHad++;
+        }
+
+        //shift end events
+        else if (currentEvent == "Lounge" && dayCount > 0 && conversationsHad >= 3) {
+
+            currentEvent = "ShiftEnd";
+            ChangeInkFile(shiftEndFiles[dayCount]);
+            conversationsHad = 0;
         }
     }
 
 
+    void RandomizeList(List<TextAsset> listToRandomize) {
 
+
+    }
 
 
 
@@ -314,10 +352,6 @@ public class InkManager : MonoBehaviour {
     void CheckForSceneChanges() {
 
         dialogueBox.text = LoadStory(); //displaying text after click
-       
-        if (animateText) {
-            StartCoroutine("PlayText");
-        }
 
         areaTemp = (string)story.EvaluateFunction("getArea");
         if (areaTemp != area) {
@@ -336,6 +370,10 @@ public class InkManager : MonoBehaviour {
         if (characterVisibleTemp != characterVisible) {
             characterVisible = characterVisibleTemp;
             sceneManagerScript.ChangeVisibility(characterVisible);
+        }
+
+        if (animateText) {
+            StartCoroutine("PlayText");
         }
     }
 

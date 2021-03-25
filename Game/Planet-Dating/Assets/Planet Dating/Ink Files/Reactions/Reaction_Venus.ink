@@ -103,3 +103,18 @@ Nevermind. I guess I'll try a different bar.
 ===function setMinimalIngredients(amount)===
 ~minimalIngredients = amount
 
+===function setSolAffection(amount)===
+~solAffection = amount
+
+===function setMercuryAffection(amount)===
+~mercuryAffection = amount
+
+===function setVenusAffection(amount)===
+~venusAffection = amount
+
+===function setEarthAffection(amount)===
+~earthAffection = amount
+
+===function setBartendingPoints(amount)===
+~bartendingPoints = amount
+
