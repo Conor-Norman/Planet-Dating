@@ -44,16 +44,19 @@ public class InkManager : MonoBehaviour {
     [Header("Scripts")]
     public SceneManager sceneManagerScript;
 
+    [Header("Story Management")]
+    public string currentEvent;
+    string currentDialogue;
+    int dayCount;
+    int conversationsHad;
+    bool freeTimeCharacterSelected;
+
     [Header("Variables")]
     public bool pause;
     bool progressPressed = false;
     float textTypeOutSeconds;
     bool animatingText;
     bool animateText;
-    string currentDialogue;
-    int dayCount;
-    string currentEvent;
-    int conversationsHad;
     public bool demo;
 
     [Header("InkVariables")]
@@ -69,21 +72,28 @@ public class InkManager : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
 
-        //sceneNumber = 0; //start of game will be changed based on main menu selection
-
         textTypeOutSeconds = 0.02f;
 
-        story = new Story(shiftStartFiles[dayCount].text);
+        dayCount = 0;
+        freeTimeCharacterSelected = false;
+        conversationsHad = 0;
+
+
+        story = new Story(shiftStartFiles[0].text);
         currentEvent = "ShiftStart";
 
         CheckForSceneChanges();
 
         dialogueBox.gameObject.SetActive(true); //enables the text box
 
-        dialogueBox.text = LoadStory(); //shows first section of dialogue
+        //dialogueBox.text = LoadStory(); //shows first section of dialogue
 
         buttonLoopCounter = 0;
         DisableChoiceBox();
+
+        RandomizeList(earthFreeTimeFiles);
+        RandomizeList(mercuryFreeTimeFiles);
+        RandomizeList(venusFreeTimeFiles);
     }
 
     // Update is called once per frame
@@ -97,6 +107,9 @@ public class InkManager : MonoBehaviour {
     #endregion
 
     #region Story Running Functions
+    /// <summary>
+    /// checks for player input
+    /// </summary>
     void InputCheck() {
         if ((Input.GetAxis("Progress") > 0 || Input.GetAxis("Progress") < 0) && !progressPressed && !animatingText) {
             progressPressed = true;
@@ -111,21 +124,27 @@ public class InkManager : MonoBehaviour {
         }
     }
 
-
+    /// <summary>
+    /// checks if there is a choice to be made or another block of text
+    ///checks if file is at end
+    /// </summary>
+    /// <returns>
+    /// returns text to be printed to dialogue
+    /// </returns>
     string LoadStory() {
 
         string text = "";
 
-        if (story.currentChoices.Count > 0) {
+        if (story.currentChoices.Count > 0) { //checks if there choices to be made
             EnableButtons();
             animateText = false;
-            //text = currentDialogue; //// take away comment when the new choice boxes are added in ======================================================================================================
+            text = currentDialogue; //displays text with choice boxes open
         }
-        else if (story.canContinue) {
+        else if (story.canContinue) { //checks if theres remaining dialogue
             animateText = true;
             text = story.Continue();
         }
-        else {
+        else if (!animatingText){ //moves to next event
             
             CheckWhatsNextEvent();
             
@@ -173,24 +192,30 @@ public class InkManager : MonoBehaviour {
 
     #region Ink Functions
 
+    /// <summary>
+    /// changes ink file
+    /// will save and load functions into scene
+    /// </summary>
+    /// <param name="nextScene">
+    /// needs text asset of the next scene
+    /// </param>
     void ChangeInkFile(TextAsset nextScene) {
 
         //save variables from previous scene here
-        saveVariables();
+        SaveVariables();
 
         story = new Story(nextScene.text); //gets json file of scene
 
-        loadVariables(); //add back in in full version ============================================================================================================================================================================================================
+        LoadVariables(); //add back in in full version ============================================================================================================================================================================================================
 
         pause = false;
 
         CheckForSceneChanges();
-
-        story.EvaluateFunction("changeName", "Protag"); //changes the players name in ink (change protag to the actual name from fariables script)
     }
 
-
-
+    /// <summary>
+    /// checks for what event is next in the day
+    /// </summary>
     public void CheckWhatsNextEvent() {
 
         //reaction events
@@ -208,19 +233,19 @@ public class InkManager : MonoBehaviour {
                 ChangeInkFile(drinkReactionFiles[2]);
                 return;
             }
-            //sceneManagerScript.ChangeArea("lounge");
         }
 
         //for day 0 stuff
         if (currentEvent == "ShiftStart" && dayCount == 0) {
 
+            RandomizeList(introFiles);
             currentEvent = "Intro";
-            ChangeInkFile(introFiles[1]);
+            ChangeInkFile(introFiles[conversationsHad]);
             conversationsHad++;
             return;
         }
         else if (currentEvent == "Intro" && dayCount == 0 && conversationsHad < 3) {
-            ChangeInkFile(introFiles[conversationsHad+1]);
+            ChangeInkFile(introFiles[conversationsHad]);
             conversationsHad++;
             return;
         }
@@ -233,29 +258,49 @@ public class InkManager : MonoBehaviour {
 
         //add area to select what characters the player will want to talk to. change scenemanager area to free time to display choices
 
+        if (currentEvent == "ShiftEnd") {
 
+            currentEvent = "FreeTimeSelection";
+            sceneManagerScript.ChangeArea("freetime");
+            dialogueBox.text = " Choose someone you want to talk to.";
+            pause = true;
+            StartCoroutine("PlayText");
+            characterNameText.text = "You";
+            return;
+        }
 
         //free time events
-        if (currentEvent == "ShiftEnd" || (currentEvent == "FreeTime" && conversationsHad < 2)) {
-            //change to free time
-            if (character == "Earth") {
+        if (currentEvent == "FreeTimeSelection" && conversationsHad < 2) {
+
+            if (character == "Earth" && freeTimeCharacterSelected) {
                 currentEvent = "FreeTime";
                 conversationsHad++;
+                sceneManagerScript.ChangeArea("lounge");
+                freeTimeCharacterSelected = false;
+                pause = false;
                 ChangeInkFile(earthFreeTimeFiles[dayCount]);
             }
-            else if (character == "Mercury") {
+            else if (character == "Mercury" && freeTimeCharacterSelected) {
                 currentEvent = "FreeTime";
                 conversationsHad++;
+                sceneManagerScript.ChangeArea("lounge");
+                freeTimeCharacterSelected = false;
+                pause = false;
                 ChangeInkFile(mercuryFreeTimeFiles[dayCount]);
             }
-            else if (character == "Venus") {
+            else if (character == "Venus" && freeTimeCharacterSelected) {
                 currentEvent = "FreeTime";
                 conversationsHad++;
+                sceneManagerScript.ChangeArea("lounge");
+                freeTimeCharacterSelected = false;
+                pause = false;
                 ChangeInkFile(venusFreeTimeFiles[dayCount]);
             }
         }
         else if (currentEvent == "FreeTime" && conversationsHad >=2) {
+           
             //next day
+            sceneManagerScript.ChangeArea("freetimereset"); //resets free time actives
 
             if (!demo) {
                 dayCount++;
@@ -271,13 +316,14 @@ public class InkManager : MonoBehaviour {
 
 
         //shift start events
-        if (currentEvent == "ShiftStart" && dayCount > 0 && conversationsHad < 3) {
+        if (currentEvent == "ShiftStart" && dayCount > 0) {
+            ChangeInkFile(shiftStartFiles[dayCount]);
+
             currentEvent = "Lounge";
-            
+            return;
         }
         else if (currentEvent == "Lounge" && dayCount > 0 && conversationsHad < 3) {
-            //randomize order of character appearing all 3 will play
-            //create a list referenceing earthLoungeFiles[dayCount-1] for each planet and randomize that array
+
             ChangeInkFile(dailyLounge[conversationsHad]);
             conversationsHad++;
         }
@@ -291,47 +337,26 @@ public class InkManager : MonoBehaviour {
         }
     }
 
+    public void FreeTimeCharacter(string characterSelected) {
+
+        character = characterSelected;
+    }
+
+    public void FreeTimeCharacterSelected(bool characterBeenSelected) {
+        freeTimeCharacterSelected = characterBeenSelected;
+    }
 
     void RandomizeList(List<TextAsset> listToRandomize) {
 
-
+        for (int i = 0; i < listToRandomize.Count; i++) {
+            TextAsset temp = listToRandomize[i];
+            int randomIndex = Random.Range(i, listToRandomize.Count);
+            listToRandomize[i] = listToRandomize[randomIndex];
+            listToRandomize[randomIndex] = temp;
+        }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    void saveVariables() {
+    void SaveVariables() {
         //affection, bartending points
         solAffection = (int)story.EvaluateFunction("getSolAffection");
         mercuryAffection = (int)story.EvaluateFunction("getMercuryAffection");
@@ -341,14 +366,20 @@ public class InkManager : MonoBehaviour {
 
     }
 
-    void loadVariables() {
+    void LoadVariables() {
         story.EvaluateFunction("setSolAffection", solAffection);
         story.EvaluateFunction("setMercuryAffection", mercuryAffection);
         story.EvaluateFunction("setVenusAffection", venusAffection);
         story.EvaluateFunction("setEarthAffection", earthAffection);
         story.EvaluateFunction("setBartendingPoints", bartendingPoints);
+        story.EvaluateFunction("changeName", "Protag");
     }
 
+    /// <summary>
+    ///is checked after each click 
+    ///checks if variables have been changed
+    ///animates next block of text (should move)
+    /// </summary>
     void CheckForSceneChanges() {
 
         dialogueBox.text = LoadStory(); //displaying text after click
@@ -377,6 +408,10 @@ public class InkManager : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// animates text going through each char
+    /// </summary>
+    /// <returns></returns>
     IEnumerator PlayText() {
         currentDialogue = dialogueBox.text;
         dialogueBox.text = "";

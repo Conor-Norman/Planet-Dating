@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class SceneManager : MonoBehaviour {
 
     #region Variables
-    [Header("Canvas Elements Free Time")]
+    [Header("Canvas Elements Lounge")]
     public GameObject textBox;
     public GameObject character;
     Image characterBodyImage;
@@ -18,6 +18,12 @@ public class SceneManager : MonoBehaviour {
     [Header("Canvas Elements Bar")]
     public GameObject ingredientOrbit;
     public GameObject IngredientList;
+
+    [Header("Canvas Elements FreeTime")]
+    public GameObject freeTimeChoices;
+    public GameObject choice1;
+    public GameObject choice2;
+    public GameObject choice3;
 
     [Header("Art")]
     public List<Sprite> characterBodies = new List<Sprite>();
@@ -43,8 +49,10 @@ public class SceneManager : MonoBehaviour {
 
         if (areaName == "bartending") {
             inkManagerScript.pause = true;
+            character.SetActive(true);
             ingredientOrbit.SetActive(true);
             IngredientList.SetActive(true);
+            freeTimeChoices.SetActive(false);
             textBox.transform.localPosition = new Vector3(0, -400, 0); //move text box location
             character.transform.localPosition = new Vector3(721, -287, 0); //move character location
             character.transform.localScale = new Vector3(-0.75f,0.75f,0.75f);
@@ -52,8 +60,10 @@ public class SceneManager : MonoBehaviour {
             //change image of text box
         }
         else if (areaName == "lounge") {
+            character.SetActive(true);
             ingredientOrbit.SetActive(false);
             IngredientList.SetActive(false);
+            freeTimeChoices.SetActive(false);
             textBox.transform.localPosition = new Vector3(0, -290, 0); //move text box location
             character.transform.localPosition = new Vector3(0, -216, 0); //move character location
             character.transform.localScale = new Vector3(1, 1, 1);
@@ -61,12 +71,17 @@ public class SceneManager : MonoBehaviour {
             //change text box image
         }
         else if (areaName == "freetime") {
+            character.SetActive(false);
             ingredientOrbit.SetActive(false);
             IngredientList.SetActive(false);
-            //show character list on screen with pictures
-            //move text box location
-            //move character location
-            //change textbox image
+            freeTimeChoices.SetActive(true);
+            textBox.transform.localPosition = new Vector3(0, 300, 0);
+            //reposition text box
+        }
+        else if (areaName == "freetimereset") {
+            choice1.SetActive(true);
+            choice2.SetActive(true);
+            choice3.SetActive(true);
         }
         else if (areaName == "date") {
             ingredientOrbit.SetActive(false);
