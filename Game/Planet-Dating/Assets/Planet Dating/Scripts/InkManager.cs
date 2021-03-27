@@ -30,15 +30,15 @@ public class InkManager : MonoBehaviour {
     public TMP_Text dialogueBox;
     public TMP_Text characterNameText;
     public List<GameObject> choiceButtons = new List<GameObject>();
-    public int buttonLoopCounter;
+    int buttonLoopCounter;
 
     [Header("On Screen")]
     //area, character, pose, background, 
-    public string character = "";
+     string character = "";
     string characterTemp = "";
-    public string area = "";
+     string area = "";
     string areaTemp = "";
-    public int characterVisible = 1;
+     int characterVisible = 1;
     int characterVisibleTemp;
 
     [Header("Scripts")]
@@ -81,6 +81,7 @@ public class InkManager : MonoBehaviour {
 
         story = new Story(shiftStartFiles[0].text);
         currentEvent = "ShiftStart";
+        RandomizeList(introFiles);
 
         CheckForSceneChanges();
 
@@ -238,7 +239,6 @@ public class InkManager : MonoBehaviour {
         //for day 0 stuff
         if (currentEvent == "ShiftStart" && dayCount == 0) {
 
-            RandomizeList(introFiles);
             currentEvent = "Intro";
             ChangeInkFile(introFiles[conversationsHad]);
             conversationsHad++;
@@ -259,18 +259,12 @@ public class InkManager : MonoBehaviour {
         //add area to select what characters the player will want to talk to. change scenemanager area to free time to display choices
 
         if (currentEvent == "ShiftEnd") {
-
             currentEvent = "FreeTimeSelection";
-            sceneManagerScript.ChangeArea("freetime");
-            dialogueBox.text = " Choose someone you want to talk to.";
-            pause = true;
-            StartCoroutine("PlayText");
-            characterNameText.text = "You";
-            return;
         }
 
         //free time events
         if (currentEvent == "FreeTimeSelection" && conversationsHad < 2) {
+
 
             if (character == "Earth" && freeTimeCharacterSelected) {
                 currentEvent = "FreeTime";
@@ -297,6 +291,9 @@ public class InkManager : MonoBehaviour {
                 ChangeInkFile(venusFreeTimeFiles[dayCount]);
             }
         }
+        else if (currentEvent == "FreeTime" && conversationsHad == 1) {
+            currentEvent = "FreeTimeSelection";
+        }
         else if (currentEvent == "FreeTime" && conversationsHad >=2) {
            
             //next day
@@ -312,6 +309,16 @@ public class InkManager : MonoBehaviour {
                 RandomizeList(dailyLounge);
                 //randomize lounge list here
             }         
+        }
+
+        if (currentEvent == "FreeTimeSelection" && !freeTimeCharacterSelected) {
+
+            sceneManagerScript.ChangeArea("freetime");
+            dialogueBox.text = " Choose someone you want to talk to.";
+            pause = true;
+            StartCoroutine("PlayText");
+            characterNameText.text = "You";
+            return;
         }
 
 
@@ -346,6 +353,10 @@ public class InkManager : MonoBehaviour {
         freeTimeCharacterSelected = characterBeenSelected;
     }
 
+    /// <summary>
+    /// randomizes a list of textAssets
+    /// </summary>
+    /// <param name="listToRandomize"></param>
     void RandomizeList(List<TextAsset> listToRandomize) {
 
         for (int i = 0; i < listToRandomize.Count; i++) {
@@ -403,13 +414,13 @@ public class InkManager : MonoBehaviour {
             sceneManagerScript.ChangeVisibility(characterVisible);
         }
 
-        if (animateText) {
+        if (animateText && !animatingText) {
             StartCoroutine("PlayText");
         }
     }
 
     /// <summary>
-    /// animates text going through each char
+    /// animates text going through each char fo the dialogue
     /// </summary>
     /// <returns></returns>
     IEnumerator PlayText() {

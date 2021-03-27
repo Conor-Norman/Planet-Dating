@@ -1418,11 +1418,8 @@ MonoBehaviour:
   - {fileID: 589060006}
   - {fileID: 1862171810}
   - {fileID: 1787397077}
-  buttonLoopCounter: 0
-  character: 
-  area: 
-  characterVisible: 1
   sceneManagerScript: {fileID: 221570385}
+  currentEvent: 
   pause: 0
   demo: 1
 --- !u!4 &904470206

@@ -20,7 +20,7 @@ VAR minimalIngredients = 0
 
 ==Intro
 
-~ area = "FreeTime"
+~ area = "lounge"
 ~ background = "Lounge"
 
 Cosmic Crush
@@ -30,15 +30,15 @@ welcome {player_name} to our game
     ->SolWalksIn
 
 ==SolWalksIn
-~ characterVisibility = 1
-~character = "sol"
+~characterVisibility = 1
+~character = "Sol"
 ~pose = "neutral"
 
 hey im sol, hows it going.
 
 you must be new here. {player_name} right?
 
-well welcome to my lounge, im going to have you work here as a bartender
+well, welcome to my lounge. im going to have you work here as a bartender
 
 are you ready to do that?
 
@@ -83,7 +83,7 @@ are you ready to do that?
 ~pose = "neutral"
 oh, here comes your first customer
 
-~character = "mercury"
+~character = "Mercury"
 mercury walks up
 
 hey, im {character} im told your new here so ill go easy.
