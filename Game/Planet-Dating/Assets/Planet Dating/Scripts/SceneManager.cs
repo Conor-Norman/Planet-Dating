@@ -108,6 +108,7 @@ public class SceneManager : MonoBehaviour {
         }
         else if (characterName == "Mercury") {
             ChangeCharacterVariables(1);
+            characterHeadPosition.localPosition = new Vector3(60, 420, 10); //change later========================================================================
         }
         else if (characterName == "Venus") {
             ChangeCharacterVariables(2);
