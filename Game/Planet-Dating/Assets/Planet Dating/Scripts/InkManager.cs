@@ -33,13 +33,15 @@ public class InkManager : MonoBehaviour {
     int buttonLoopCounter;
 
     [Header("On Screen")]
-    //area, character, pose, background, 
-     string character = "";
+    public string playerName = "";
+    string character = "";
     string characterTemp = "";
-     string area = "";
+    string area = "";
     string areaTemp = "";
-     int characterVisible = 1;
+    int characterVisible = 1;
     int characterVisibleTemp;
+    public InputField playerNameText;
+    public GameObject NameCreation;
 
     [Header("Scripts")]
     public SceneManager sceneManagerScript;
@@ -91,6 +93,8 @@ public class InkManager : MonoBehaviour {
 
         buttonLoopCounter = 0;
         DisableChoiceBox();
+
+        pause = true;
 
         RandomizeList(earthFreeTimeFiles);
         RandomizeList(mercuryFreeTimeFiles);
@@ -301,6 +305,7 @@ public class InkManager : MonoBehaviour {
 
             if (!demo) {
                 dayCount++;
+                sceneManagerScript.needTutorial = false;
                 currentEvent = "ShiftStart";
                 dailyLounge[0] = earthLoungeFiles[dayCount - 1];
                 dailyLounge[1] = mercuryLoungeFiles[dayCount - 1];
@@ -367,6 +372,14 @@ public class InkManager : MonoBehaviour {
         }
     }
 
+    public void ChangePlayerName() {
+        playerName = playerNameText.text;
+        pause = false;
+        story.EvaluateFunction("changeName", playerName);
+        CheckForSceneChanges();
+        Destroy(NameCreation);
+    }
+
     void SaveVariables() {
         //affection, bartending points
         solAffection = (int)story.EvaluateFunction("getSolAffection");
@@ -383,7 +396,7 @@ public class InkManager : MonoBehaviour {
         story.EvaluateFunction("setVenusAffection", venusAffection);
         story.EvaluateFunction("setEarthAffection", earthAffection);
         story.EvaluateFunction("setBartendingPoints", bartendingPoints);
-        story.EvaluateFunction("changeName", "Protag");
+        story.EvaluateFunction("changeName", playerName);
     }
 
     /// <summary>
@@ -460,7 +473,13 @@ public class InkManager : MonoBehaviour {
 
     void ChangeCharacterName(string characterName) {
         if (characterName == "none") {
-            characterNameText.text = "You";
+            if (playerName != null) {
+                characterNameText.text = playerName;
+            }
+            else {
+                characterNameText.text = "You";
+            }
+            
         }
         else {
             characterNameText.text = characterName;

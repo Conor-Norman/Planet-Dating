@@ -18,6 +18,8 @@ public class SceneManager : MonoBehaviour {
     [Header("Canvas Elements Bar")]
     public GameObject ingredientOrbit;
     public GameObject IngredientList;
+    public GameObject Tutorial;
+    public bool needTutorial;
 
     [Header("Canvas Elements FreeTime")]
     public GameObject freeTimeChoices;
@@ -39,6 +41,7 @@ public class SceneManager : MonoBehaviour {
     private void Start() {
         characterBodyImage = character.GetComponent<Image>();
         characterHeadMeshRend = character.GetComponentInChildren<MeshRenderer>();
+        needTutorial = true;
     }
     #endregion
 
@@ -52,6 +55,9 @@ public class SceneManager : MonoBehaviour {
             character.SetActive(true);
             ingredientOrbit.SetActive(true);
             IngredientList.SetActive(true);
+            if (needTutorial) {
+                Tutorial.SetActive(true);
+            }
             freeTimeChoices.SetActive(false);
             textBox.transform.localPosition = new Vector3(0, -400, 0); //move text box location
             character.transform.localPosition = new Vector3(721, -287, 0); //move character location
@@ -61,6 +67,7 @@ public class SceneManager : MonoBehaviour {
         }
         else if (areaName == "lounge") {
             character.SetActive(true);
+            Tutorial.SetActive(false);
             ingredientOrbit.SetActive(false);
             IngredientList.SetActive(false);
             freeTimeChoices.SetActive(false);
@@ -72,6 +79,7 @@ public class SceneManager : MonoBehaviour {
         }
         else if (areaName == "freetime") {
             character.SetActive(false);
+            Tutorial.SetActive(false);
             ingredientOrbit.SetActive(false);
             IngredientList.SetActive(false);
             freeTimeChoices.SetActive(true);
@@ -86,6 +94,7 @@ public class SceneManager : MonoBehaviour {
         else if (areaName == "date") {
             ingredientOrbit.SetActive(false);
             IngredientList.SetActive(false);
+            Tutorial.SetActive(false);
             //move text box location
             //move character location
             //change textbox image

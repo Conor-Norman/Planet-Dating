@@ -50,8 +50,9 @@ Oh, cute! I love these. Thanks a ton, hun.
 What do you think I should caption this?
 
     +[ Make them stop and stare ]
+    
         ~characterVisibility = 0
-        I think something like 'Make them stop and stare' might be cool?
+        I think something like "Make them stop and stare" might be cool?
         It suits you. I know I can't help but stare for a bit whenever I see you. You really demand attention.
         
         ~characterVisibility = 1
@@ -67,15 +68,16 @@ What do you think I should caption this?
         ->SmallTalk
         
     +[ Trouble never looked so fine ]
+    
         ~characterVisibility = 0
-        A caption like 'Trouble never looked so fine' could work?
+        A caption like "Trouble never looked so fine" could work?
         Maybe with a sunglasses emoji, too.
         You just seem, like, an absolute bad bitch, right? So maybe play on that?
         
         ~characterVisibility = 1
         Oh my god, stooop.
         I mean, yeah, I'm for sure the baddest bitch, and I know that, but I've got an image to maintain, you know?
-        I can't exactly go branding myself as being 'trouble'. 
+        I can't exactly go branding myself as being "trouble". 
         Besides, the sunglasses emoji? That's so tacky.
         It's not terrible, though...I can workshop it a bit.
         
@@ -84,10 +86,11 @@ What do you think I should caption this?
         
         ->SmallTalk
         
-    +[ Not everybody has to like me. I can't force you to have good taste ]
+    +[ You don't have to like me. Can't force you to have good taste ]
+    
         ~characterVisibility = 0
         You should definitely try something about being true to you. 
-        Like... 'Not everybody has to like me. I can't force you to have good taste'.
+        Like... "You don't have to like me. Can't force you to have good taste."
         
         ~characterVisibility = 1
         ~venusAffection--
@@ -116,6 +119,7 @@ Don't worry! I won't be offended. I know I can be a lot to  take in all at once.
 I wouldn't be surprised if you were too intimidated by my glory to stick around for too long.
 
     +[ You ARE intimidating ]
+    
         ~characterVisibility = 0
         I mean...if I'm being honest, you are kind of intimidating.
         You really have a lot to say and don't seem like you hold back anything, ever.
@@ -128,6 +132,7 @@ I wouldn't be surprised if you were too intimidated by my glory to stick around 
         ->MoreTalk
         
     +[ I like being around you ]
+    
         ~characterVisibility = 0
         What? No way. I like hanging out with you.
         I mean, granted, I haven't known you for very long, but I appreciate how open and honest you are.
@@ -151,6 +156,7 @@ I wouldn't be surprised if you were too intimidated by my glory to stick around 
         ->MoreTalk
         
     +[ I don't have anything better to do ]
+    
         ~characterVisibility = 0
         I guess I can stick around for a while.
         It's not like I have anything better to do. Everyone else seems busy.
@@ -170,7 +176,7 @@ I wouldn't be surprised if you were too intimidated by my glory to stick around 
 ==MoreTalk
 
 ~characterVisibility = 1
-Tbh, I used to be pretty self conscious about how, like...'loud and proud' I am, I guess.
+Tbh, I used to be pretty self conscious about how, like..."loud and proud" I am, I guess.
 People literally point that out to me all the time.
 But that's just me. And it's not something I can change, so, you know.
 Besides, the internet loves it!
@@ -257,7 +263,7 @@ But I wanna get to know you too, sweetie! Tell me something about yourself. Anyt
         ~characterVisibility = 1
         Oh my stars...gag me.
         Sweetie, that's gross.
-        Like, I can respect a cute, casual 'fit sometimes, but the same sweats every day? That's kinda nasty. And not good nasty, either, if that wasn't clear.
+        Like, I can respect a cute, casual fit sometimes, but the same sweats every day? That's kinda nasty. And not good nasty, either, if that wasn't clear.
         It's mondo important to take care of yourself and be put together and stuff.
         Dressing like that absolutely won't cut it.
         
@@ -453,4 +459,3 @@ Tell Sol bye for me!
 
 ===function setBartendingPoints(amount)===
 ~bartendingPoints = amount
-
