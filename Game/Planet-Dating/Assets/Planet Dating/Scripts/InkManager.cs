@@ -374,6 +374,7 @@ public class InkManager : MonoBehaviour {
 
     public void ChangePlayerName() {
         playerName = playerNameText.text;
+        textTypeOutSeconds = 0.02f;
         pause = false;
         story.EvaluateFunction("changeName", playerName);
         CheckForSceneChanges();
@@ -472,7 +473,7 @@ public class InkManager : MonoBehaviour {
     }
 
     void ChangeCharacterName(string characterName) {
-        if (characterName == "none") {
+        if (characterName == "none" || characterVisible == 0) {
             if (playerName != null) {
                 characterNameText.text = playerName;
             }
@@ -488,14 +489,3 @@ public class InkManager : MonoBehaviour {
 
     #endregion
 }
-
-/* for choices
- * need to check when a choice is happening
- * disable dialogue box
- * check amount of choices there are
- * enable each button for the amount
- * put correct text for each button 
- * after choice disable each button and chack which choice was made
- * ensure correct path was gone down
- * enable dialogue box
- */

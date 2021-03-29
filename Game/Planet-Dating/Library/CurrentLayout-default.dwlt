@@ -124,7 +124,7 @@ MonoBehaviour:
   m_MinSize: {x: 908, y: 442}
   m_MaxSize: {x: 22003, y: 10021}
   vertical: 0
-  controlID: 87
+  controlID: 162
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,8 +169,8 @@ MonoBehaviour:
     y: 0
     width: 1203
     height: 633
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -549,21 +549,21 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: ae51ffff2252ffffc052ffff5afbffffa44b0000
+      m_ExpandedIDs: 5afbffff344b0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: GameObject
-        m_OriginalName: GameObject
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -44250
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 9}
       m_SearchString: 
@@ -612,21 +612,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Planet Dating/Ink Files/Free Time/Venus
+    - Assets/Planet Dating/Scripts
     m_Globs: []
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Planet Dating/Ink Files/Free Time/Venus
+  - Assets/Planet Dating/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Documents\Schooling\Sheridan\Capstone\Planet-Dating\Game\Planet-Dating
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 3c4a0000
-    m_LastClickedID: 19004
-    m_ExpandedIDs: 000000009451000096510000985100009a5100009c5100009e510000a0510000a2510000a4510000a6510000a8510000b6510000165200002052000000ca9a3b
+    m_SelectedIDs: 04520000
+    m_LastClickedID: 20996
+    m_ExpandedIDs: 00000000d2510000d4510000d6510000d8510000da510000dc510000de510000e0510000e2510000e8510000ea51000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -654,7 +654,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000009451000096510000985100009a5100009c5100009e510000a0510000a2510000a4510000a6510000a8510000aa510000
+    m_ExpandedIDs: 00000000d2510000d4510000d6510000d8510000da510000dc510000de510000e0510000e2510000e4510000e6510000e8510000ea510000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
