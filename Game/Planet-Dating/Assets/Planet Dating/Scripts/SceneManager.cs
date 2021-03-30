@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class SceneManager : MonoBehaviour {
 
     #region Variables
+    [Header("Universal Canvas Elements")]
+    public Image fadeScreen;
+
     [Header("Canvas Elements Lounge")]
     public GameObject textBox;
     public GameObject character;
@@ -32,6 +35,10 @@ public class SceneManager : MonoBehaviour {
     public List<Material> characterHeads = new List<Material>();
     public List<Sprite> backgrounds = new List<Sprite>();
 
+    [Header("Music")]
+    public AudioSource audioSource;
+    public List<AudioClip> BGMusic = new List<AudioClip>();
+
     [Header("Scripts")]
     public InkManager inkManagerScript;
 
@@ -42,13 +49,18 @@ public class SceneManager : MonoBehaviour {
         characterBodyImage = character.GetComponent<Image>();
         characterHeadMeshRend = character.GetComponentInChildren<MeshRenderer>();
         needTutorial = true;
+
+        fadeScreen.color = Color.black;
     }
     #endregion
 
     #region User Functions
     public void ChangeArea(string areaName) {
 
+        inkManagerScript.pause = true;
         //fade to black
+        //StartCoroutine(FadeTo(Color.clear, Color.black, 3));
+        
 
         if (areaName == "bartending") {
             inkManagerScript.pause = true;
@@ -63,7 +75,10 @@ public class SceneManager : MonoBehaviour {
             character.transform.localPosition = new Vector3(721, -287, 0); //move character location
             character.transform.localScale = new Vector3(-0.75f,0.75f,0.75f);
             background.sprite = backgrounds[1];
-            //change image of text box
+
+            //music
+            audioSource.clip = BGMusic[1];
+            audioSource.Play();
         }
         else if (areaName == "lounge") {
             character.SetActive(true);
@@ -75,7 +90,10 @@ public class SceneManager : MonoBehaviour {
             character.transform.localPosition = new Vector3(0, -216, 0); //move character location
             character.transform.localScale = new Vector3(1, 1, 1);
             background.sprite = backgrounds[0];
-            //change text box image
+
+            //music
+            audioSource.clip = BGMusic[0];
+            audioSource.Play();
         }
         else if (areaName == "freetime") {
             character.SetActive(false);
@@ -84,7 +102,10 @@ public class SceneManager : MonoBehaviour {
             IngredientList.SetActive(false);
             freeTimeChoices.SetActive(true);
             textBox.transform.localPosition = new Vector3(0, 300, 0);
-            //reposition text box
+
+            //music
+            audioSource.clip = BGMusic[0];
+            audioSource.Play();
         }
         else if (areaName == "freetimereset") {
             choice1.SetActive(true);
@@ -101,6 +122,18 @@ public class SceneManager : MonoBehaviour {
         }
 
         //fade back in
+        inkManagerScript.pause = true;
+        //StartCoroutine(FadeTo(Color.black, Color.clear, 3));
+
+    }
+
+    IEnumerator FadeTo(Color start, Color end, float time) {
+
+        float t = 0;
+        t += Time.deltaTime / time;
+
+        fadeScreen.color = Color.Lerp(start, end, t);
+        yield return null;
     }
 
     public void ChangeCharacter(string characterName) {
