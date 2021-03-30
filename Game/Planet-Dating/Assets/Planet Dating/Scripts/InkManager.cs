@@ -230,14 +230,17 @@ public class InkManager : MonoBehaviour {
 
             if (character == "Earth") {
                 ChangeInkFile(drinkReactionFiles[0]);
+                pause = false;
                 return;
             }
             else if (character == "Mercury") {
                 ChangeInkFile(drinkReactionFiles[1]);
+                pause = false;
                 return;
             }
             else if (character == "Venus") {
                 ChangeInkFile(drinkReactionFiles[2]);
+                pause = false;
                 return;
             }
         }

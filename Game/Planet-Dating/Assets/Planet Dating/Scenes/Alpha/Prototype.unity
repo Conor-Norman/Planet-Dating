@@ -567,7 +567,7 @@ MonoBehaviour:
   ingredientOrbit: {fileID: 370835412}
   IngredientList: {fileID: 1069367357}
   Tutorial: {fileID: 2103082213}
-  needTutorial: 0
+  needTutorial: 1
   freeTimeChoices: {fileID: 64989714}
   choice1: {fileID: 977608638}
   choice2: {fileID: 1697200415}
@@ -579,7 +579,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9415fbdb3d273524384f185819678196, type: 3}
   characterHeads:
   - {fileID: 2100000, guid: fdc962e0b5b5f594e96dbd4da39dd08e, type: 2}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: a6eba44ce857bf34ab33e44400d7511e, type: 2}
   - {fileID: 2100000, guid: 8adf791f1fdedf044a552491aca35671, type: 2}
   - {fileID: 2100000, guid: a0f581b20e5857843afb99697c921598, type: 2}
   backgrounds:
@@ -974,6 +974,31 @@ PrefabInstance:
       propertyPath: inkManagerScript
       value: 
       objectReference: {fileID: 904470205}
+    - target: {fileID: 5339807294088893870, guid: e1c86f6d3c86d954b954f39e761fb87f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6687345651561193803, guid: e1c86f6d3c86d954b954f39e761fb87f,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6687345651561193803, guid: e1c86f6d3c86d954b954f39e761fb87f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6845077321473471291, guid: e1c86f6d3c86d954b954f39e761fb87f,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: -586.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6845077321473471291, guid: e1c86f6d3c86d954b954f39e761fb87f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6987353004920377248, guid: e1c86f6d3c86d954b954f39e761fb87f,
         type: 3}
       propertyPath: m_Name
@@ -2833,7 +2858,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1453582129}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.51, z: 55}
+  m_LocalPosition: {x: 0, y: 2.51, z: -5}
   m_LocalScale: {x: 0.11550001, y: 0.24200004, z: 0.44000006}
   m_Children: []
   m_Father: {fileID: 370835413}
@@ -3275,7 +3300,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fdc962e0b5b5f594e96dbd4da39dd08e, type: 2}
+  - {fileID: 2100000, guid: a6eba44ce857bf34ab33e44400d7511e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
