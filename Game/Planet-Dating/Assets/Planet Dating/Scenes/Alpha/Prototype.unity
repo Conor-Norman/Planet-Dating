@@ -588,7 +588,7 @@ MonoBehaviour:
   audioSource: {fileID: 221570388}
   BGMusic:
   - {fileID: 8300000, guid: e9b4b0b4df2710e4fa810615ac972754, type: 3}
-  - {fileID: 8300000, guid: e426edbe097601a4c8d21b5de4685388, type: 3}
+  - {fileID: 8300000, guid: c62c9b2705ec22644b9038fc818d7b4c, type: 3}
   inkManagerScript: {fileID: 904470205}
 --- !u!4 &221570386
 Transform:
