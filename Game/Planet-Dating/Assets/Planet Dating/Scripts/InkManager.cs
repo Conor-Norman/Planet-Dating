@@ -24,6 +24,7 @@ public class InkManager : MonoBehaviour {
     public List<TextAsset> overtimeFiles = new List<TextAsset>();
     public List<TextAsset> helpFiles = new List<TextAsset>();
     public List<TextAsset> dateFiles = new List<TextAsset>();
+    public List<TextAsset> endings = new List<TextAsset>();
     List<TextAsset> dailyLounge = new List<TextAsset>();
 
     [Header("Canvas")]
@@ -38,7 +39,7 @@ public class InkManager : MonoBehaviour {
     string characterTemp = "";
     string area = "";
     string areaTemp = "";
-    int characterVisible = 1;
+    int characterVisible = 0;
     int characterVisibleTemp;
     public InputField playerNameText;
     public GameObject NameCreation;
@@ -93,6 +94,7 @@ public class InkManager : MonoBehaviour {
 
         buttonLoopCounter = 0;
         DisableChoiceBox();
+        characterNameText.text = "You";
 
         pause = true;
 
@@ -313,7 +315,10 @@ public class InkManager : MonoBehaviour {
 
                 RandomizeList(dailyLounge);
                 //randomize lounge list here
-            }         
+            }
+            else if (demo) {
+                ChangeInkFile(endings[0]);
+            }     
         }
 
         if (currentEvent == "FreeTimeSelection" && !freeTimeCharacterSelected) {
@@ -377,6 +382,7 @@ public class InkManager : MonoBehaviour {
         textTypeOutSeconds = 0.02f;
         pause = false;
         story.EvaluateFunction("changeName", playerName);
+        characterNameText.text = playerName;
         CheckForSceneChanges();
         Destroy(NameCreation);
     }
@@ -415,17 +421,18 @@ public class InkManager : MonoBehaviour {
             sceneManagerScript.ChangeArea(area); //changes the area the player is in
         }
 
+        characterVisibleTemp = (int)story.EvaluateFunction("getCharacterVisible");
+        if (characterVisibleTemp != characterVisible) {
+            characterVisible = characterVisibleTemp;
+            sceneManagerScript.ChangeVisibility(characterVisible);
+            ChangeCharacterName(character);
+        }
+
         characterTemp = (string)story.EvaluateFunction("changeCharacter");
         if (characterTemp != character) {
             character = characterTemp;
             ChangeCharacterName(character);
             sceneManagerScript.ChangeCharacter(character);
-        }
-
-        characterVisibleTemp = (int)story.EvaluateFunction("getCharacterVisible");
-        if (characterVisibleTemp != characterVisible) {
-            characterVisible = characterVisibleTemp;
-            sceneManagerScript.ChangeVisibility(characterVisible);
         }
 
         if (animateText && !animatingText) {
@@ -474,7 +481,7 @@ public class InkManager : MonoBehaviour {
 
     void ChangeCharacterName(string characterName) {
         if (characterName == "none" || characterVisible == 0) {
-            if (playerName != null) {
+            if (playerName != "") {
                 characterNameText.text = playerName;
             }
             else {

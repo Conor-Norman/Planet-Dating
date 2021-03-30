@@ -1986,6 +1986,8 @@ MonoBehaviour:
   overtimeFiles: []
   helpFiles: []
   dateFiles: []
+  endings:
+  - {fileID: 4900000, guid: 32c030da77215e74da46f16e905ce882, type: 3}
   dialogueBox: {fileID: 29361423}
   characterNameText: {fileID: 1685231197}
   choiceButtons:
@@ -2216,8 +2218,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -759.7, y: 45}
-  m_SizeDelta: {x: 271.9, y: 479}
+  m_AnchoredPosition: {x: -750, y: 125}
+  m_SizeDelta: {x: 331.96, y: 613.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1069367359
 MonoBehaviour:
@@ -2274,7 +2276,7 @@ MonoBehaviour:
   m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 40
+  m_fontSizeMin: 35
   m_fontSizeMax: 40
   m_fontStyle: 0
   m_HorizontalAlignment: 1
@@ -3016,7 +3018,7 @@ Transform:
   m_GameObject: {fileID: 1663574656}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 50, y: 50, z: 50}
+  m_LocalScale: {x: 57.6, y: 62.5, z: 50}
   m_Children: []
   m_Father: {fileID: 1069367358}
   m_RootOrder: 0
