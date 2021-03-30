@@ -28,6 +28,9 @@ VAR area = ""
 
 ~area = "lounge"
 ~character = "none"
+~characterVisibility = 0
+
+Welcome to Cosmixology, what's your name?
 
 -> JobIntro
 

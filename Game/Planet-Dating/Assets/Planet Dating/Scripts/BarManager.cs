@@ -60,21 +60,3 @@ public class BarManager : MonoBehaviour {
 
     #endregion
 }
-
-#region pseudocode
-/* get array of ideal ingredients from ink
- * get array of selected ingredients form orbit ring
- * get amount of correct ingredients needed from ink
- * compare the 2 arrays for matching ingredients
- * create variable to track amount of affection gained
- * check if it meets the minimum correct ingredient (award 1 affection point send to ink)
- * check if all 3 match (award 1 affection point send to ink)
- * send affection points to ink
- * 
- * 
- * for drink:
- * create array for storing necessary changes to drink
- * spawn in drink and change the look of it to meet what they mixed
- * when served (button click) continue story in ink
- */
-#endregion

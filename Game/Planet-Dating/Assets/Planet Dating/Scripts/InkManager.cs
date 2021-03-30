@@ -24,6 +24,7 @@ public class InkManager : MonoBehaviour {
     public List<TextAsset> overtimeFiles = new List<TextAsset>();
     public List<TextAsset> helpFiles = new List<TextAsset>();
     public List<TextAsset> dateFiles = new List<TextAsset>();
+    public List<TextAsset> endings = new List<TextAsset>();
     List<TextAsset> dailyLounge = new List<TextAsset>();
 
     [Header("Canvas")]
@@ -33,13 +34,15 @@ public class InkManager : MonoBehaviour {
     int buttonLoopCounter;
 
     [Header("On Screen")]
-    //area, character, pose, background, 
-     string character = "";
+    public string playerName = "";
+    string character = "";
     string characterTemp = "";
-     string area = "";
+    string area = "";
     string areaTemp = "";
-     int characterVisible = 1;
+    int characterVisible = 0;
     int characterVisibleTemp;
+    public InputField playerNameText;
+    public GameObject NameCreation;
 
     [Header("Scripts")]
     public SceneManager sceneManagerScript;
@@ -91,6 +94,9 @@ public class InkManager : MonoBehaviour {
 
         buttonLoopCounter = 0;
         DisableChoiceBox();
+        characterNameText.text = "You";
+
+        pause = true;
 
         RandomizeList(earthFreeTimeFiles);
         RandomizeList(mercuryFreeTimeFiles);
@@ -301,6 +307,7 @@ public class InkManager : MonoBehaviour {
 
             if (!demo) {
                 dayCount++;
+                sceneManagerScript.needTutorial = false;
                 currentEvent = "ShiftStart";
                 dailyLounge[0] = earthLoungeFiles[dayCount - 1];
                 dailyLounge[1] = mercuryLoungeFiles[dayCount - 1];
@@ -308,7 +315,10 @@ public class InkManager : MonoBehaviour {
 
                 RandomizeList(dailyLounge);
                 //randomize lounge list here
-            }         
+            }
+            else if (demo) {
+                ChangeInkFile(endings[0]);
+            }     
         }
 
         if (currentEvent == "FreeTimeSelection" && !freeTimeCharacterSelected) {
@@ -367,6 +377,16 @@ public class InkManager : MonoBehaviour {
         }
     }
 
+    public void ChangePlayerName() {
+        playerName = playerNameText.text;
+        textTypeOutSeconds = 0.02f;
+        pause = false;
+        story.EvaluateFunction("changeName", playerName);
+        characterNameText.text = playerName;
+        CheckForSceneChanges();
+        Destroy(NameCreation);
+    }
+
     void SaveVariables() {
         //affection, bartending points
         solAffection = (int)story.EvaluateFunction("getSolAffection");
@@ -383,7 +403,7 @@ public class InkManager : MonoBehaviour {
         story.EvaluateFunction("setVenusAffection", venusAffection);
         story.EvaluateFunction("setEarthAffection", earthAffection);
         story.EvaluateFunction("setBartendingPoints", bartendingPoints);
-        story.EvaluateFunction("changeName", "Protag");
+        story.EvaluateFunction("changeName", playerName);
     }
 
     /// <summary>
@@ -401,17 +421,18 @@ public class InkManager : MonoBehaviour {
             sceneManagerScript.ChangeArea(area); //changes the area the player is in
         }
 
+        characterVisibleTemp = (int)story.EvaluateFunction("getCharacterVisible");
+        if (characterVisibleTemp != characterVisible) {
+            characterVisible = characterVisibleTemp;
+            sceneManagerScript.ChangeVisibility(characterVisible);
+            ChangeCharacterName(character);
+        }
+
         characterTemp = (string)story.EvaluateFunction("changeCharacter");
         if (characterTemp != character) {
             character = characterTemp;
             ChangeCharacterName(character);
             sceneManagerScript.ChangeCharacter(character);
-        }
-
-        characterVisibleTemp = (int)story.EvaluateFunction("getCharacterVisible");
-        if (characterVisibleTemp != characterVisible) {
-            characterVisible = characterVisibleTemp;
-            sceneManagerScript.ChangeVisibility(characterVisible);
         }
 
         if (animateText && !animatingText) {
@@ -459,8 +480,14 @@ public class InkManager : MonoBehaviour {
     }
 
     void ChangeCharacterName(string characterName) {
-        if (characterName == "none") {
-            characterNameText.text = "You";
+        if (characterName == "none" || characterVisible == 0) {
+            if (playerName != "") {
+                characterNameText.text = playerName;
+            }
+            else {
+                characterNameText.text = "You";
+            }
+            
         }
         else {
             characterNameText.text = characterName;
@@ -469,14 +496,3 @@ public class InkManager : MonoBehaviour {
 
     #endregion
 }
-
-/* for choices
- * need to check when a choice is happening
- * disable dialogue box
- * check amount of choices there are
- * enable each button for the amount
- * put correct text for each button 
- * after choice disable each button and chack which choice was made
- * ensure correct path was gone down
- * enable dialogue box
- */
