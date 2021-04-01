@@ -23,8 +23,8 @@ VAR minimalIngredients = 0
 ~character = "none"
 
 ~characterVisibility = 0
-(Relax, relax; can't get too nervous befor—)
-(Oh no no no, what's that?)
+(Relax, relax, can't get too nervous befor—)
+(Oh nonono, what's that?)
 (Something just burst through the doors! It's loud and angry and...kind of smal—)
 
 ~character = "Mercury"
@@ -37,11 +37,12 @@ How's it hanging? Always a good time visiting my dearest, dearest pals!
 (Oh, ahem. Well then. It's just...the mechanic?)
 
     +[ What can I get you? ]
+    
         ~characterVisibility = 0
         Welcome to the Lounge! What can I get for you?
         
         ~characterVisibility = 1
-        Straight to the point, I like that, but this customer wants to get to know the new bartender a little.
+        Straight to the point, 'ppreciate that! But this customer wants to get to know the new bartender a little.
         I'm Mercury, I run maintenance for this joint and every other joint in the whole, wide Solar System.
         I know, I know, lotta work, but I'm good for it. I'm practically built for the job. 
         Observe.
@@ -57,11 +58,13 @@ How's it hanging? Always a good time visiting my dearest, dearest pals!
         Sounds super!
         
         ~characterVisibility = 0
-        (He's still flexing.) I sure hope so.
+        (He's still flexing.)
+        I sure hope so.
         
         ->AboutMercury
     
     +[ Here to fix something? ]
+    
         ~characterVisibility = 0
         Umm...are you...here to fix something?
         I'm so sorry, Sol never never mentioned anything about maintenance — I'll go get them right away!
@@ -83,7 +86,8 @@ How's it hanging? Always a good time visiting my dearest, dearest pals!
         ~characterVisibility = 0
         (He's not actually going to go—)
         ~character = "none"
-        (Aaand he's out. Now he's back in, though I don't remember him flexing like that when he came in the first time.)
+        (Aaand he's out.)
+        (Now he's back in, though I don't remember him flexing like that the first time.)
         
         ~character = "Mercury"
         ~pose = "neutral"
@@ -96,12 +100,13 @@ How's it hanging? Always a good time visiting my dearest, dearest pals!
         ->AboutMercury
         
     +[ Who are you, again? ]
+    
         ~characterVisibility = 0
         Hello to you too! Who...are you, again? Have we met before?
         
         ~mercuryAffection--
         ~characterVisibility = 1
-        M-me? Uh, I'm Mercury — I work maintenance around these parts. I was probably off somewhere, ya know, working.
+        M-me? Uh, I'm Mercury — I work maintenance 'round these parts. I was probably off somewhere, ya know, working.
         Sorry, you caught me a little off guard. It's nice to meet Sol's new shadow. 
         You've definitely never seen me. And if you did, I bet you'd remember. No one could forget a body like this!
         The universe really did bless me with all the right elements. 
@@ -136,13 +141,13 @@ More issues over at the Kuiper Belt, though. That place would fall apart if it w
 Well, I'll be sure to call when I inevitably break something.
 
 ~characterVisibility = 1
-Ha! I'm always orbiting around Sol's spot. It's way more fun here, always some cool peeps around. 
+Ha! I'm always orbiting 'round Sol's spot. It's way more fun here, always some cool peeps. 
 
 ~characterVisibility = 0
 Already looking forward to your next visit. 
 
 ~characterVisibility = 1
-You can always count on me. 
+You can count on me. 
 Might be a little tardy some cycles. Usually me and Mars hit up the gym right after our shifts end, but I just had to introduce myself to the new recruit!
 Now I know what you're thinking: "Can he even get any bigger?"
 The answer is "yes."
@@ -162,6 +167,7 @@ For sure. Speaking of which, how can I be the best bartender for you?
 Whacha thinking? 
 
     +[ Something weak ]
+    
         ~characterVisibility = 0
         You're pretty extreme already, so how about a change of pace? Something a little weaker, maybe?
         
@@ -179,6 +185,7 @@ Whacha thinking?
         ->ActualDrink
         
     +[ Something smooth ]
+    
         ~characterVisibility = 0
         You're a hard worker, maybe something smooth to help you unwind?
         
@@ -194,6 +201,7 @@ Whacha thinking?
         ->ActualDrink
         
     +[ Something that packs a punch ] 
+    
         ~characterVisibility = 0
         A tough guy like yourself might want to challenge himself with something a little strong, no?
         
@@ -217,13 +225,13 @@ Whacha thinking?
 ~characterVisibility = 1
 Won't make it too hard on a newbie. 
 
-~idealIngredient1 = 0
-~idealIngredient2 = 0
+~idealIngredient1 = 3
+~idealIngredient2 = 3
 ~idealIngredient3 = 0
 ~minimalIngredients = 1
 ~area = "bartending"
 
-Just throw in something spicy, just a bit though. Show me what you got!
+Just throw in something spicy, just a bit though. Keep everything else neutral, I wanna enjoy the heat.
 
     ->END
 

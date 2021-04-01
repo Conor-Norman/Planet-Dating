@@ -22,8 +22,6 @@ VAR matchingIngredientCount = 0
 ~characterVisibility = 1
 ~pose = "neutral"
 
-well lets have a taste
-
 { 
     - matchingIngredientCount == 3:
         -> PerfectDrink

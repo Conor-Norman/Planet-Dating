@@ -101,7 +101,7 @@ public class SceneManager : MonoBehaviour {
             ingredientOrbit.SetActive(false);
             IngredientList.SetActive(false);
             freeTimeChoices.SetActive(true);
-            textBox.transform.localPosition = new Vector3(0, 300, 0);
+            textBox.transform.localPosition = new Vector3(0, 335, 0);
 
             //music
             audioSource.clip = BGMusic[0];
@@ -146,19 +146,19 @@ public class SceneManager : MonoBehaviour {
         }
         else if (characterName == "Sol") {
             ChangeCharacterVariables(0);
-            characterHeadPosition.localPosition = new Vector3(60, 420, 10);
+            characterHeadPosition.localPosition = new Vector3(68, 462, 10);
         }
         else if (characterName == "Mercury") {
             ChangeCharacterVariables(1);
-            characterHeadPosition.localPosition = new Vector3(60, 420, 10); //change later========================================================================
+            characterHeadPosition.localPosition = new Vector3(58, 450, 10);
         }
         else if (characterName == "Venus") {
             ChangeCharacterVariables(2);
-            characterHeadPosition.localPosition = new Vector3(-14, 306, 10);
+            characterHeadPosition.localPosition = new Vector3(-34, 356, 10);
         }
         else if (characterName == "Earth") {
             ChangeCharacterVariables(3);
-            characterHeadPosition.localPosition = new Vector3(47, 315, 10);
+            characterHeadPosition.localPosition = new Vector3(60, 347, 10);
         }
 
             //fade in new one with LERP?

@@ -1,17 +1,19 @@
-VAR player_name = ""
+VAR player_name = "protag"
 VAR character = ""
 VAR characterVisibility = 0
 VAR pose = ""
+VAR background = ""
+VAR area = ""
 
 VAR solAffection = 0
 VAR mercuryAffection = 0
 VAR venusAffection = 0
 VAR earthAffection = 0
+
 VAR bartendingPoints = 0
-
-VAR background = ""
-VAR area = ""
-
+VAR idealIngredient1 = 0
+VAR idealIngredient2 = 0
+VAR idealIngredient3 = 0
 VAR minimalIngredients = 0
 VAR matchingIngredientCount = 0
 
@@ -20,7 +22,8 @@ VAR matchingIngredientCount = 0
 ~character = "Venus"
 ~characterVisibility = 1
 ~pose = "neutral"
-Well, lets have a taste.
+Hang on, I need a quick pic first.
+Okay, bottoms up!
 
 { 
     - matchingIngredientCount == 3:
@@ -70,17 +73,17 @@ Nevermind. I guess I'll try a different bar.
 
     ->END
     
+===function setMatchingIngredients(amount)===
+~matchingIngredientCount = amount
+
 ===function changeName(newName) ===
-~ player_name = newName
+~player_name = newName
 
 ===function changeCharacter===
 ~return character
 
 ===function getCharacterVisible===
 ~return characterVisibility
-
-===function getArea===
-~return area
 
 ===function getSolAffection===
 ~return solAffection
@@ -96,12 +99,21 @@ Nevermind. I guess I'll try a different bar.
 
 ===function getBartendingPoints===
 ~return bartendingPoints
-    
-===function setMatchingIngredients(amount)===
-~matchingIngredientCount = amount
 
-===function setMinimalIngredients(amount)===
-~minimalIngredients = amount
+===function getArea===
+~return area
+
+===function getIdealIngredient1===
+~return idealIngredient1
+
+===function getIdealIngredient2===
+~return idealIngredient2
+
+===function getIdealIngredient3===
+~return idealIngredient3
+
+===function getMinimalIngredients===
+~return minimalIngredients
 
 ===function setSolAffection(amount)===
 ~solAffection = amount
@@ -117,4 +129,5 @@ Nevermind. I guess I'll try a different bar.
 
 ===function setBartendingPoints(amount)===
 ~bartendingPoints = amount
+
 

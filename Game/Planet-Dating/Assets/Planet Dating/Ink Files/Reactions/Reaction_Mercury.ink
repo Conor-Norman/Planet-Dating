@@ -1,17 +1,19 @@
-VAR player_name = ""
+VAR player_name = "protag"
 VAR character = ""
 VAR characterVisibility = 0
 VAR pose = ""
+VAR background = ""
+VAR area = ""
 
 VAR solAffection = 0
 VAR mercuryAffection = 0
 VAR venusAffection = 0
 VAR earthAffection = 0
+
 VAR bartendingPoints = 0
-
-VAR background = ""
-VAR area = ""
-
+VAR idealIngredient1 = 0
+VAR idealIngredient2 = 0
+VAR idealIngredient3 = 0
 VAR minimalIngredients = 0
 VAR matchingIngredientCount = 0
 
@@ -20,7 +22,7 @@ VAR matchingIngredientCount = 0
 ~character = "Mercury"
 ~characterVisibility = 1
 ~pose = "neutral"
-Well, lets have a taste.
+Okay, let's try this out.
 
 { 
     - matchingIngredientCount == 3:
@@ -46,9 +48,6 @@ Ow, that's hot — I mean, it's not, it's not hot.
 ...
 Uhhh, know what, I think I was supposed be somewhere. Yeah, catch ya later!
 
-~characterVisibility = 0
-(He's looking a little wobbly.)
-
     ->END
 
 
@@ -59,7 +58,7 @@ Uhhh, know what, I think I was supposed be somewhere. Yeah, catch ya later!
 ~characterVisibility = 1
 Alright, not bad buddy!
 Off to a pretty decent start!
-The flavours, the heat — it's all there.
+The flavours, the pizzazz — it's all there.
 I gotta bounce for now, but we'll cook up something even better next time.
 
     ->END
@@ -76,17 +75,17 @@ Ah, don't worry 'bout it, you'll kill it next time. I'm out for now.
 
     ->END
     
+===function setMatchingIngredients(amount)===
+~matchingIngredientCount = amount
+
 ===function changeName(newName) ===
-~ player_name = newName
+~player_name = newName
 
 ===function changeCharacter===
 ~return character
 
 ===function getCharacterVisible===
 ~return characterVisibility
-
-===function getArea===
-~return area
 
 ===function getSolAffection===
 ~return solAffection
@@ -102,12 +101,21 @@ Ah, don't worry 'bout it, you'll kill it next time. I'm out for now.
 
 ===function getBartendingPoints===
 ~return bartendingPoints
-    
-===function setMatchingIngredients(amount)===
-~matchingIngredientCount = amount
 
-===function setMinimalIngredients(amount)===
-~minimalIngredients = amount
+===function getArea===
+~return area
+
+===function getIdealIngredient1===
+~return idealIngredient1
+
+===function getIdealIngredient2===
+~return idealIngredient2
+
+===function getIdealIngredient3===
+~return idealIngredient3
+
+===function getMinimalIngredients===
+~return minimalIngredients
 
 ===function setSolAffection(amount)===
 ~solAffection = amount
@@ -123,4 +131,6 @@ Ah, don't worry 'bout it, you'll kill it next time. I'm out for now.
 
 ===function setBartendingPoints(amount)===
 ~bartendingPoints = amount
+
+
 

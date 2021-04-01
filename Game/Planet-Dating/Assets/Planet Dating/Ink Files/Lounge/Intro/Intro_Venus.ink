@@ -23,15 +23,12 @@ VAR minimalIngredients = 0
 ~area = "lounge"
 ~character = "none"
 
-(It's fairly slow right now. Not many customers seem to be coming by the bar, and Sol's handling the few who do. )
-
+(It's fairly slow right now. Not many customers seem to be coming by the bar, and Sol's handling the few who do.)
 (A single planet lingers across the room, completely glued to their phone.)
-(I'm certain I've never met them before - I'd definitely remember them - but I feel like I must have at least seen them before, somewhere...)
-
-
+(I'm certain I've never met them before — I'd definitely remember them — but I feel like I must have at least seen them before, somewhere...)
 (Before I can figure out where that 'somewhere' is, they look up.)
 (I push off of the counter and scramble to make myself look busy, hoping they hadn't noticed me staring.)
-(After a moment, I risk peaking up. My heart speeds up as I see them approaching the bar.)
+(After a moment, I risk peaking up. My core heats up as I see them approaching the bar.)
 
     ->VenusIntroduction
     
@@ -42,9 +39,12 @@ VAR minimalIngredients = 0
 ~characterVisibility = 1
 
 Hiii sweety. Be a doll and fix my usual for me, m'kay? Thanksss.
+
+~characterVisibility = 0
 (They immediately turn their attention to their phone.)
 
     +[ I'm new, what's your usual? ]
+    
         ~characterVisibility = 0
         Oh, um...I'm really sorry, I actually just started here. What's your usual...?
         
@@ -58,6 +58,7 @@ Hiii sweety. Be a doll and fix my usual for me, m'kay? Thanksss.
         
         
     +[ Why not try something different? ]
+    
         ~characterVisibility = 0
         Variety's the spice of life, you know. Why not try something a little different?
         
@@ -69,7 +70,7 @@ Hiii sweety. Be a doll and fix my usual for me, m'kay? Thanksss.
         We've never met, actually. I'm {player_name}. I just started working here.
         
         ~characterVisibility = 1
-        Ohhhh, no wonder! I'm ususally, like, super good with names. Kinda.
+        Ohhhh, no wonder! I'm usually, like, super good with names. Kinda.
         
         ~characterVisibility = 0
         Speaking of names...what's yours?
@@ -77,8 +78,9 @@ Hiii sweety. Be a doll and fix my usual for me, m'kay? Thanksss.
         ->AboutVenus
         
     +[ Uhhhhhh ]
+    
         ~characterVisibility = 0
-        Uhhhhhh
+        Uhhhhhh...
         
         ~venusAffection--
         ~characterVisibility = 1
@@ -110,10 +112,10 @@ You are so adorable, like you don't already know who I am.
 Venus...like the intergalactic celebrity, Venus?
 
 ~characterVisibility = 1
-Obviously, yeah. How could anyone forget a face like this?
+Obviously, yeah. How could anyone forget someone who looks like this?
 
 ~characterVisibility = 0
-I knew you looked familiar! I guess I've been to busy job hunting to keep up with what's hot.
+I knew you looked familiar! I guess I've been too busy job hunting to keep up with what's hot.
 
 ~characterVisibility = 1
 Oh my stars, you regular people have it sooooo hard. I don't know what I'd do if I couldn't check social media at least three times a cycle. Sad face.
@@ -138,6 +140,7 @@ Yeah, I know. You're welcome.
 Hmm...what would you recommend, hun?
 
     +[ Something sweet ]
+    
         ~characterVisibility = 0
         Hmm...you seem like the type who'd enjoy a sweet drink. Is that right?
         
@@ -160,6 +163,7 @@ Hmm...what would you recommend, hun?
         ->ActualDrink
         
     +[ Something spicy ]
+    
         ~characterVisibility = 0
         Let's see...maybe something with a little spice to shake up your night?
         
@@ -177,8 +181,9 @@ Hmm...what would you recommend, hun?
         ->ActualDrink
         
     +[ Something aesthetic ] 
+    
         ~characterVisibility = 0
-        Let me guess...you want a drink as eyecatching as you are?
+        Let me guess...you want a drink as eye-catching as you are?
         
         ~venusAffection++
         ~characterVisibility = 1
@@ -188,7 +193,8 @@ Hmm...what would you recommend, hun?
         I guess I'm just good at reading people, haha.
         
         ~characterVisibility = 1
-        Orrr maybe we're just kindred spirits? Oh my stars, I can see the headlines now: "Superstar Venus seen vibing with nobody bartender" ...No offense.
+        Orrr maybe we're just kindred spirits? Oh my stars, I can see the headlines now: "Superstar Venus seen vibing with nobody bartender."
+        No offense...
         
         ~characterVisibility = 0
         Uh...none taken, I guess?
@@ -203,12 +209,13 @@ Hmm...what would you recommend, hun?
 Look, I'll just make this nice and easy for you, since you're new.
 
 ~idealIngredient1 = 2
-~idealIngredient2 = 3
+~idealIngredient2 = 0
 ~idealIngredient3 = 0
 ~minimalIngredients = 1
 ~area = "bartending"
 
-Can you just get me anything that shines, sweetie? You're an absolute babe, thanks, hun. I'll be waiting.
+#Can you just get me anything that shines, sweetie? The more glamourous, the better for me. Thanks, hun.
+Can you just get me anything that looks good, sweetie? The more glamourous, the better for my pics. Thanks, hun.
 
     ->END
 

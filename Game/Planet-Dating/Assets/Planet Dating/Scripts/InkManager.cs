@@ -124,7 +124,9 @@ public class InkManager : MonoBehaviour {
             CheckForSceneChanges();
         }
         else if ((Input.GetAxis("Progress") > 0 || Input.GetAxis("Progress") < 0) && !progressPressed && animatingText) {
-            textTypeOutSeconds = 0;
+            progressPressed = true;
+            completeText();
+            //textTypeOutSeconds = 0.0f
         }
         else if (Input.GetAxis("Progress") == 0) {
             progressPressed = false;
@@ -153,8 +155,7 @@ public class InkManager : MonoBehaviour {
         }
         else if (!animatingText){ //moves to next event
             
-            CheckWhatsNextEvent();
-            
+            CheckWhatsNextEvent(); 
         }
         return text;
     }
@@ -320,8 +321,14 @@ public class InkManager : MonoBehaviour {
                 //randomize lounge list here
             }
             else if (demo) {
+                currentEvent = "DemoEnd";
                 ChangeInkFile(endings[0]);
+                return;
             }     
+        }
+
+        if (currentEvent == "DemoEnd") {
+            dialogueBox.text = "Thank you for playing! press ESC to exit";
         }
 
         if (currentEvent == "FreeTimeSelection" && !freeTimeCharacterSelected) {
@@ -495,6 +502,14 @@ public class InkManager : MonoBehaviour {
         else {
             characterNameText.text = characterName;
         }
+    }
+
+    void completeText() {
+        StopCoroutine("PlayText");
+        dialogueBox.text = "";
+        dialogueBox.text = currentDialogue;
+        animatingText = false;
+        //need a wait timer for accidental clicks
     }
 
     #endregion

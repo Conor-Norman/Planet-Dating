@@ -27,7 +27,7 @@ VAR minimalIngredients = 0
 (I'm still new here, it's not like I know the folks around here well enough to just insert myself into their conversations.)
 (I look around the room for something to distract myself with so that I don't look too awkward just standing around, when I spot Venus.)
 (They're kinda hard to miss. They're standing across the room, taking selfies with their drink.)
-(They notice me looking and break into a grin, waving me over. I guess I'll be spending my free time with them, for today.)
+(They notice me looking and break into a grin, waving me over. I guess I'll be spending my free time with them.)
 (They barely wait until I'm within earshot to start talking.)
 
 ~character = "Venus"
@@ -63,7 +63,7 @@ What do you think I should caption this?
         Ugh, I love it, so gonna use that one.
         
         ~characterVisibility = 0
-        (They immediately start fiddling with their phone again. After a minute, the slip it back into their pocket.)
+        (They immediately start fiddling with their phone again. After a minute, they slip it back into their pocket.)
         
         ->SmallTalk
         
@@ -75,7 +75,7 @@ What do you think I should caption this?
         You just seem, like, an absolute bad bitch, right? So maybe play on that?
         
         ~characterVisibility = 1
-        Oh my god, stooop.
+        Oh my god, stoooop.
         I mean, yeah, I'm for sure the baddest bitch, and I know that, but I've got an image to maintain, you know?
         I can't exactly go branding myself as being "trouble". 
         Besides, the sunglasses emoji? That's so tacky.
@@ -136,7 +136,7 @@ I wouldn't be surprised if you were too intimidated by my glory to stick around 
         ~characterVisibility = 0
         What? No way. I like hanging out with you.
         I mean, granted, I haven't known you for very long, but I appreciate how open and honest you are.
-        I never have to wonder what your thinking or worry about if I said something you didn't like, because I know you'll tell me.
+        I never have to wonder what you're thinking or worry about if I said something you didn't like, because I know you'll tell me.
         Not to mention, I think your whole glamorous, larger than life attitude is just really cool and charming.
         
         ~characterVisibility = 1
@@ -201,9 +201,9 @@ But I wanna get to know you too, sweetie! Tell me something about yourself. Anyt
         ~characterVisibility = 1
         ~venusAffection++
         Oh, honey, there is no one else like me out there.
-        I'm so glad that you have a dream that you're passionate about, and that you're actively persuing it!
+        I'm so glad that you have a dream that you're passionate about, and that you're actively pursuing it!
         I think it's like, super important to do what you love.
-        Even if it's a gamble sometimes, it's better to at least try to live your fantasy and fail, than to be too scared to even attempti it and risk totally losing any chance you have.
+        Even if it's a gamble sometimes, it's better to at least try to live your fantasy and fail, than to be too scared to even attempt it and risk totally losing any chance you have.
         Maybe that's a little obvious, though, given what I do, haha!
         Really, though, babe, good for you. I'm proud of you for going for this!
         
@@ -219,10 +219,10 @@ But I wanna get to know you too, sweetie! Tell me something about yourself. Anyt
         Thank you.
         
         ->PostSecret
-    +[ If I had enough money to affort it, I'd never work again ]
+    +[ If I had enough money to afford it, I'd never work again ]
         ~characterVisibility = 0
         Well, if I'm being totally honest, I don't love the grind of working to make ends meet.
-        If I had the option to just live my normal life and not working while someone just paid my expenses for me, I'd take it.
+        If I had the option to just live my normal life and not work while someone just paid my expenses for me, I'd take it.
         I'd never do any kind of work again. I'd just...hang out.
         
         ~characterVisibility = 1
@@ -230,14 +230,14 @@ But I wanna get to know you too, sweetie! Tell me something about yourself. Anyt
         Wouldn't it be better to use those finances as a safety blanket so you can safely risk chasing your dreams?
         
         ~characterVisibility = 0
-        My dreams involve staying in bed all day and playing video games.
+        My dreams involve staying in bed all cycle and playing video games.
         
         ~characterVisibility = 1
         Oh.
         I mean, I totally get not liking the grind of, like, some normie job like yours - no offense.
         Even I don't always feel like dolling myself up and posting cute pics for my adoring fans, if you can believe that.
         Sometimes it's nice to just take a break and relax, focus on yourself and all.
-        But I don't think I could live like that every day, you know?
+        But I don't think I could live like that every cycle, you know?
         I think It's like, super important to have ambition, drive, and passion, don't you?
         
         ~characterVisibility = 0
@@ -246,9 +246,9 @@ But I wanna get to know you too, sweetie! Tell me something about yourself. Anyt
         
         ->PostSecret
         
-    +[ When I'm not here I just wear the same swetpants every day]
+    +[ When I'm not here I just wear the same sweatpants every cycle]
         ~characterVisibility = 0
-        Well...when I'm not working and I can just stay home, I just wear the same sweatpants every day.
+        Well...when I'm not working and I can just stay home, I just wear the same sweatpants every cycle.
         I really only take them off to wash them, or to shower.
         They've got a few holes in them at this point, and more than a few stains.
         But they're just so warm and comfy, I can't stand the thought of wearing anything else if I don't absolutely have to.
@@ -263,7 +263,7 @@ But I wanna get to know you too, sweetie! Tell me something about yourself. Anyt
         ~characterVisibility = 1
         Oh my stars...gag me.
         Sweetie, that's gross.
-        Like, I can respect a cute, casual fit sometimes, but the same sweats every day? That's kinda nasty. And not good nasty, either, if that wasn't clear.
+        Like, I can respect a cute, casual fit sometimes, but the same sweats every cycle? That's kinda nasty. And not good nasty, either, if that wasn't clear.
         It's mondo important to take care of yourself and be put together and stuff.
         Dressing like that absolutely won't cut it.
         
@@ -280,7 +280,7 @@ But I wanna get to know you too, sweetie! Tell me something about yourself. Anyt
 ==PostSecret
 
 ~characterVisibility = 1
-Either way, thanks for telling me that abot yourself.
+Either way, thanks for telling me that about yourself.
 Now we both know a little more about each other, yeah?
 I love getting to know you normal people a bit better, makes you feel more real, almost like we could be equals in some ways, you know?
 
@@ -317,7 +317,7 @@ After all, I have to connect with my fans if I want them to like me and keep com
         You're so totes adorbs when you get all flustered and worked up like that, {player_name}!
         It totally is hard work.
         Like, keeping up with all these different social medias, managing my image 24/7, reaching out to fans to make sure they feel heard and appreciated - it can be a lot.
-        But at the end of the day, it's still totally worth it.
+        But in the end, it's still totally worth it.
         
         ~characterVisibility = 0
         You seem like you really love what you do.
@@ -338,7 +338,7 @@ After all, I have to connect with my fans if I want them to like me and keep com
         Excuse me?
         There's way more that goes into it than that!
         That would be like me saying all you have to do is pour a couple of liquids into a glass.
-        Doesn't feel fery good to be judged or have your work underappreciated, does it?
+        Doesn't feel very good to be judged or have your work underappreciated, does it?
         
         ~characterVisibility = 0
         ...No. It doesn't.
@@ -348,7 +348,7 @@ After all, I have to connect with my fans if I want them to like me and keep com
         Um, try super insensitive???
         I love my job, and believe it or not, it's not easy, so I really don't appreciate you belittling me for it.
         You should never talk down to someone for what they do. You don't know what it's like.
-        Being in the public eye constantly isn't alsways as fun and glamorous as it seems, you know?
+        Being in the public eye constantly isn't always as fun and glamorous as it seems, you know?
         Think before you speak next time.
         
         ~characterVisibility = 0
@@ -459,3 +459,4 @@ Tell Sol bye for me!
 
 ===function setBartendingPoints(amount)===
 ~bartendingPoints = amount
+

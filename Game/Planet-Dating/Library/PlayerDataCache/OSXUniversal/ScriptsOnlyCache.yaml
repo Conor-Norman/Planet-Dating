@@ -7,7 +7,7 @@ ScriptsOnlyBuild:
     - QuitGameOnKeypress
     Assembly-CSharp.dll:
     - BarManager
-    - InkTest
+    - InkManager
     - SceneManager
     Bolt.Core.Runtime.dll:
     - Bolt.SceneVariables
@@ -49,6 +49,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    - UnityEngine.UI.InputField
     - UnityEngine.UI.Text
   sceneClasses:
     Assets/Planet Dating/Scenes/Alpha/Prototype.unity:
@@ -76,57 +77,61 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 12316}
+      Script: {instanceID: 12314}
     - Class: 114
-      Script: {instanceID: 12366}
+      Script: {instanceID: 12370}
     - Class: 114
-      Script: {instanceID: 12986}
+      Script: {instanceID: 12990}
     - Class: 114
-      Script: {instanceID: 13098}
+      Script: {instanceID: 13102}
     - Class: 114
-      Script: {instanceID: 13596}
-    - Class: 114
-      Script: {instanceID: 13650}
+      Script: {instanceID: 13600}
     - Class: 114
       Script: {instanceID: 13654}
     - Class: 114
-      Script: {instanceID: 13656}
+      Script: {instanceID: 13658}
     - Class: 114
-      Script: {instanceID: 14404}
+      Script: {instanceID: 13660}
     - Class: 114
-      Script: {instanceID: 14510}
+      Script: {instanceID: 14408}
     - Class: 114
-      Script: {instanceID: 15052}
+      Script: {instanceID: 14514}
     - Class: 114
-      Script: {instanceID: 15054}
+      Script: {instanceID: 15056}
     - Class: 114
-      Script: {instanceID: 15386}
+      Script: {instanceID: 15058}
     - Class: 114
-      Script: {instanceID: 15952}
+      Script: {instanceID: 15390}
     - Class: 114
-      Script: {instanceID: 16598}
+      Script: {instanceID: 15956}
     - Class: 114
-      Script: {instanceID: 16624}
+      Script: {instanceID: 16494}
     - Class: 114
-      Script: {instanceID: 17218}
+      Script: {instanceID: 16602}
     - Class: 114
-      Script: {instanceID: 17416}
+      Script: {instanceID: 16628}
     - Class: 114
-      Script: {instanceID: 18000}
+      Script: {instanceID: 17220}
     - Class: 114
-      Script: {instanceID: 18342}
+      Script: {instanceID: 17418}
     - Class: 114
-      Script: {instanceID: 18650}
+      Script: {instanceID: 18002}
+    - Class: 114
+      Script: {instanceID: 18344}
+    - Class: 114
+      Script: {instanceID: 18652}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
-      Script: {instanceID: 0}
-    - Class: 136
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -315,7 +320,7 @@ ScriptsOnlyBuild:
     className: PhysicsRaycaster
   - hash:
       serializedVersion: 2
-      Hash: 247e7bb371940a563623760bf4659877
+      Hash: fc421ed1448da232cd912d50eb293810
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SceneManager
@@ -531,10 +536,10 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
-      Hash: d96c84243b655fa3c5400fe524d49c8e
+      Hash: 3d378860dcfffc3bcf480782cec13afa
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: InkTest
+    className: InkManager
   - hash:
       serializedVersion: 2
       Hash: c1d728126ff1918728036c59106d32b2
@@ -711,7 +716,7 @@ ScriptsOnlyBuild:
     className: TMP_ColorGradient
   - hash:
       serializedVersion: 2
-      Hash: 3f3ccf852e87651e5e6daa26ffebad06
+      Hash: ea4424015fd80e30358b8b818fac1f36
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BarManager
@@ -802,4 +807,4 @@ ScriptsOnlyBuild:
   platform: 2
   scenePathNames:
   - Assets/Planet Dating/Scenes/Alpha/Prototype.unity
-  playerPath: C:/Users/ghost/Desktop/Cosmic Crush 0.13.app
+  playerPath: C:/Users/ghost/Desktop/Cosmixology V0.3 Mac/Cosmixology V0.3 Mac.app

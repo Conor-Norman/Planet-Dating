@@ -82,7 +82,7 @@ So what's the schedule looking like? How does {player_name} spend their free tim
         ~mercuryAffection--
         Oh, uh, I had no idea I was being so annoying...
         Stupid, Mercury, stupid.
-        I'll get out of your space if you really don't want me orbiting around you like that. 
+        I'll get out of your space if you really don't want me orbiting 'round you like that. 
         
         ~characterVisibility = 0
         Wait no, I came to you for directions! It's not you, I promise.
@@ -102,7 +102,7 @@ So what's the schedule looking like? How does {player_name} spend their free tim
         ~characterVisibility = 1
         I'm definitely all 'bout making new friends! Everyone needs people to support and uplift them, ya know?
         Being alone's the worse, feeling like you're not appreciated and stuff. Sucks. 
-        But now that I'm here, you got nothing to worry about!
+        But now that I'm here, you got nothing to worry 'bout!
         
         ~characterVisibility = 0
         Pretty good to hear, honestly. You have anyone else you'd want to round up for some fun?
@@ -122,7 +122,7 @@ So what's the schedule looking like? How does {player_name} spend their free tim
         
         ~characterVisibility = 1
         ~mercuryAffection++
-        That's what I'm talking about!
+        That's what I'm talking 'bout!
         The more experiences under your belt the better! Getting out of your comfort zone helps you grow.
         You already know I'm big on growing — can't get enough of it!
         
@@ -149,7 +149,7 @@ I'll consider it, but I'm feeling pretty beat after my shift...
 
 ~characterVisibility = 1
 Ahem, I, Mercury, humbly extend you a once-in-a-lifetime offer to join the Buff Boys Club. 
-Right now, it's me, Mars, aaaannndddddd that's it. And maybe you! Not everyone's serious about their health, I guess. 
+Right now, it's me, Mars, aaaannndddddd that's it. And maybe you! Not everyone's serious 'bout their health, I guess. 
 We meet most cycles to pump iron and hype each other up, 'cause that's what real homies do. You could be a homie too!
 What do ya say? You in?
 
@@ -256,7 +256,7 @@ So...um...how's theeeee Solar System been treating ya?
         ~mercuryAffection++
         Yeah that's great to hear. Was worried you weren't feeling it here...
         This is an awesome system to live in, no doubt. Especially when you got planets like me showing you the ropes.
-        I got so much more to show you and talk to you about, but we should save that for...some other time.
+        I got so much more to show you and talk to you 'bout, but we should save that for...some other time.
         Can't be having too much excitement in one cycle...
         
         ~characterVisibility = 0
@@ -305,7 +305,7 @@ So...um...how's theeeee Solar System been treating ya?
 
 ~characterVisibility = 1
 It's a cool place, ya know? Everyone's gotta do their part and be kind to one another or everything falls apart.
-Sometimes...people forget about that last part. Or at least I think they do.
+Sometimes...people forget 'bout that last part. Or at least I think they do.
 I don't know...sometimes I just feel like everyone's mad at me...
 
 ~characterVisibility = 0
@@ -336,7 +336,7 @@ Jeez, I'm really beat...ugh...this cycle...
         Oh? Uh? Yeah...soooo...
         There's a lot of...
         I'm sorry, I actually have some other, uh, duties to take care of. I'll make it up to you, promise.
-        Work, to the gym, to the Jupiter stuff...just a busy day, ya know?
+        Work, to the gym, to the Jupiter stuff...just a busy cycle, ya know?
         
         ~characterVisibility = 0
         No worries there. I don't want to keep you from living your life.
@@ -352,7 +352,7 @@ Jeez, I'm really beat...ugh...this cycle...
         
         ~characterVisibility = 1
         If it's up to me...then...
-        How about we try out this new game, yeah! Basically, we both head out and reconvene later to talk more...
+        How 'bout we try out this new game, yeah! Basically, we both head out and reconvene later to talk more...
         
         ~characterVisibility = 0
         You mean like, calling it here and going home?
@@ -447,4 +447,3 @@ Jeez, I'm really beat...ugh...this cycle...
 
 ===function setBartendingPoints(amount)===
 ~bartendingPoints = amount
-
